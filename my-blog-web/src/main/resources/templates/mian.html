@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <!--<link rel="icon" href="/img/core-img/favicon.ico">-->
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/font-awesome.css">
+
+</head>
+<body>
+
+<!--中间内容-->
+<section class="person-info">
+    <div class="person-image">
+        <img src="/images/touxiang.png" style="width: 220px;height: auto;" >
+    </div>
+    <div class="person-info-details">
+        <ul class="person-info-ul">
+            <li class="person-info-li"><div class="name">学习使我快乐</div></li>
+            <li class="person-info-li"><div class="name">对潇潇暮雨洒江天</div></li>
+            <li class="person-info-li">
+                <ul class="person-info-li-ul">
+                    <li class="person-info-li-ul-li"><a href="" data-toggle="tooltip" data-placement="top" title="Tooltip on top"><i class="fa fa-github fa-lg" aria-hidden="true" style="color: black"></i></a></li>
+                    <li class="person-info-li-ul-li"><a href=""><i class="fa fa-star-half-o  fa-lg" aria-hidden="true" style="color: gold"></i></a></li>
+                    <li class="person-info-li-ul-li"><a href=""><i class="fa fa-envira  fa-lg" aria-hidden="true" style="color: darkgreen"></i></a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</section>
+
+
+<script src="/js/jquery-3.4.1.js"></script>
+<script src="/js/bootstrap.js"></script>
+
+<script>
+    $(function () {
+
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>
+
+</body>
+</html>

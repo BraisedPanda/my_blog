@@ -1,0 +1,43 @@
+.person-info{
+    margin-left: 2%;
+    width: 93%;
+    height:250px;
+
+}
+.person-image{
+    float: left;
+    height: 100%;
+    width: 250px;
+
+}
+.person-info-details{
+    margin-top: 30px;
+    float: left;
+    height: 100%;
+    width: 250px;
+
+}
+.person-info-ul{
+    float: left;
+    list-style-type: none;
+}
+.person-info-li{
+    width:200px;
+    height:50px;
+    margin-top: 20px;
+}
+.person-info-li-ul{
+    margin-left: -20%;
+    list-style-type: none;
+    float: left;
+}
+.person-info-li-ul-li{
+    float: left;
+
+    width: 30px;
+    margin-right: 20px;
+}
+.person-info-li-ul-li a{
+    text-decoration: none;
+    color:black;
+}
