@@ -17,4 +17,9 @@ public class PageController {
     public ModelAndView index(){
         return new ModelAndView("mian");
     }
+
+    @RequestMapping("test")
+    public ModelAndView test(){
+        return new ModelAndView("test");
+    }
 }

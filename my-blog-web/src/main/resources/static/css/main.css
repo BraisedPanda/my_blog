@@ -1,3 +1,6 @@
+body{
+    background-image: url('/images/background.png');
+}
 .person-info{
     margin-left: 2%;
     width: 93%;
@@ -27,7 +30,6 @@
     margin-top: 20px;
 }
 .person-info-li-ul{
-    margin-left: -20%;
     list-style-type: none;
     float: left;
 }

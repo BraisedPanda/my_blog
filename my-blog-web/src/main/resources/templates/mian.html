@@ -7,8 +7,19 @@
     <link rel="stylesheet" href="/css/bootstrap.css">
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/font-awesome.css">
+    <link rel="stylesheet" href="/tips/jquery.mytooltip.css">
+    <link rel="stylesheet" href="/tips/style.css">
 
 </head>
+<style>
+    .my-tooltip{
+        border-radius: 10px;
+        width: 90px;
+        background-color: wheat;
+        color:black;
+        text-align: center;
+    }
+</style>
 <body>
 
 <!--中间内容-->
@@ -22,9 +33,12 @@
             <li class="person-info-li"><div class="name">对潇潇暮雨洒江天</div></li>
             <li class="person-info-li">
                 <ul class="person-info-li-ul">
-                    <li class="person-info-li-ul-li"><a href="" data-toggle="tooltip" data-placement="top" title="Tooltip on top"><i class="fa fa-github fa-lg" aria-hidden="true" style="color: black"></i></a></li>
-                    <li class="person-info-li-ul-li"><a href=""><i class="fa fa-star-half-o  fa-lg" aria-hidden="true" style="color: gold"></i></a></li>
-                    <li class="person-info-li-ul-li"><a href=""><i class="fa fa-envira  fa-lg" aria-hidden="true" style="color: darkgreen"></i></a></li>
+                    <li class="person-info-li-ul-li"><a href="" data-toggle="tooltip" data-placement="top" title="Tooltip on top"><i class="fa fa-github fa-lg js-mytooltip" data-mytooltip-custom-class="my-tooltip" data-mytooltip-direction="bottom"
+                                                                                                                                     data-mytooltip-template="Github" aria-hidden="true" style="color: black"></i></a></li>
+                    <li class="person-info-li-ul-li"><a href=""><i class="fa fa-star-half-o  fa-lg js-mytooltip " data-mytooltip-custom-class="my-tooltip" data-mytooltip-direction="bottom"
+                                                                   data-mytooltip-template="收藏" aria-hidden="true" style="color: gold"></i></a></li>
+                    <li class="person-info-li-ul-li"><a href=""><i class="fa fa-envira  fa-lg js-mytooltip" data-mytooltip-custom-class="my-tooltip" data-mytooltip-direction="bottom"
+                                                                   data-mytooltip-template="树叶子" aria-hidden="true" style="color: darkgreen"></i></a></li>
                 </ul>
             </li>
         </ul>
@@ -32,9 +46,12 @@
 </section>
 
 
+
+
 <script src="/js/jquery-3.4.1.js"></script>
 <script src="/js/bootstrap.js"></script>
-
+<script src="/tips/jquery.mytooltip.js"></script>
+<script src="/tips/script.js"></script>
 <script>
     $(function () {
 
