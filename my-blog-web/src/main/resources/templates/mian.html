@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="/css/font-awesome.css">
     <link rel="stylesheet" href="/tips/jquery.mytooltip.css">
     <link rel="stylesheet" href="/tips/style.css">
-
+    <link rel="stylesheet" type="text/css" href="/css/lrtk.css">
 </head>
 <style>
     .my-tooltip{
@@ -21,6 +21,22 @@
     }
 </style>
 <body>
+<!--上方导航条-->
+<nav class="navbar navbar-default navbar-fixed-top nav-top ">
+    <div class="container nav-top-container">
+        <ul class="nav-top-ul">
+            <a href="#" class="nav-top-a"><li class="nav-top-li active">首页</li></a>
+            <a href="#" class="nav-top-a"><li class="nav-top-li">首页2</li></a>
+            <a href="#" class="nav-top-a"><li class="nav-top-li">首页3</li></a>
+            <a href="#" class="nav-top-a"><li class="nav-top-li">首页4</li></a>
+            <a href="#" class="nav-top-a"><li class="nav-top-li">首页5</li></a>
+
+        </ul>
+
+    </div>
+</nav>
+
+
 
 <!--中间内容-->
 <section class="person-info">
@@ -46,12 +62,70 @@
 </section>
 
 
+<!--最新博客-->
+<section class="latest-blog">
+    <div class="container latest-blog-container">
+        <div class="latest-blog-top">
+            <div class="latest-blog-top-left">
+                <div class="latest-blog-top-left-title"><i class="fa fa-book">&nbsp;最近博客</i></div>
+            </div>
+            <a href="#">
+            <div class="latest-blog-top-right">
+              <i class="fa fa-chevron-right" aria-hidden="true"></i>
+            </div>
+            </a>
+        </div>
+        <div class="latest-blog-body">
+            <div class="latest-blog-body-image">
+                <a href="#">
+                <ul class="grid">
+
+                    <li class="cs-style-3">
+                        <figure>
+                            <div><img src="/images/2.png" alt="img02"></div>
+                            <figcaption>
+                                <h3>&nbsp;Fairytale~</h3>
+                                <span>&nbsp;2019年12月23日</span>
+
+                            </figcaption>
+                        </figure>
+                    </li>
+
+                </ul>
+                </a>
+            </div>
+            <div class="latest-blog-body-right">
+                <a href="#">
+                <div class="latest-blog-body-title">
+                    Fairytale~
+                </div>
+                </a>
+                <a href="#">
+                <div class="latest-blog-body-describe" style="text-align: left">
+                    &nbsp;&nbsp;说来也怪，这套小说貌似是我等得最久的一次快递了，前前后后（从下单开始）总共有整整一周的时间，在这套书之后两天下单的一个包也还比它早到两三天，这可能就是知识的力量吧。拿到的时候还蛮激动的，不过乍一看觉得...
+                </div>
+                </a>
+                <div class="latest-blog-body-bottom">
+                    <ul class="latest-blog-body-ul">
+                        <div class="latest-blog-body-bottom-font"><li class="latest-blog-body-li fa fa-th">&nbsp;Java</li></div>
+                        <div class="latest-blog-body-bottom-font"> <li class="latest-blog-body-li fa fa-eye">&nbsp;1330</li></div>
+                        <div class="latest-blog-body-bottom-font"> <li class="latest-blog-body-li fa fa-calendar">&nbsp;2019年12月23日 </li></div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</section>
+
 
 
 <script src="/js/jquery-3.4.1.js"></script>
 <script src="/js/bootstrap.js"></script>
 <script src="/tips/jquery.mytooltip.js"></script>
 <script src="/tips/script.js"></script>
+<script src="js/modernizr.custom.js"></script>
 <script>
     $(function () {
 

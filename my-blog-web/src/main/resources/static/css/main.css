@@ -43,3 +43,151 @@ body{
     text-decoration: none;
     color:black;
 }
+.nav-top{
+    margin-top: 30px;
+    width: 95%;
+    float: left;
+    height: 7%;
+    position: relative;
+
+}
+.nav-top-ul{
+    margin:0 auto;
+    list-style-type: none;
+}
+.nav-top-li{
+    margin-left: 15px;
+    float: left;
+    width:60px;
+    border-radius: 15px;
+    text-align: center;
+    line-height: 30px;
+    transition: 0.3s;
+}
+.nav-top-a{
+    text-decoration: none;
+    color:black;
+
+}
+.nav-top-a:hover{
+    color:white;
+    text-decoration: none;
+}
+.nav-top-li:hover{
+    background-color: rgb(40, 185, 190);
+    color:white;
+}
+.active{
+    background-color: rgb(40, 185, 190);
+    color:white;
+}
+
+/********最近博客模块*******/
+
+/*------博客模块头部开始------*/
+.latest-blog{
+    margin-top: 30px;
+    width: 95%;
+    float: left;
+    height: auto;
+    position: relative;
+
+}
+.latest-blog-top{
+    width: 95%;
+    height:50px;
+    float: left;
+}
+.latest-blog-top-left{
+    border-radius: 15px;
+    background-color: rgb(169, 169, 169);
+    width: 180px;
+    float: left;
+    text-align: center;
+    line-height: 50px;
+}
+.latest-blog-top-left-title{
+    font-size: 25px;
+    color: white;
+}
+.latest-blog-top-right{
+    color: white;
+    border-radius: 15px;
+    background-color: rgb(169, 169, 169);
+    width: 60px;
+    float: right;
+    text-align: center;
+    line-height: 50px;
+}
+/*------博客模块头部结束------*/
+
+/*------博客模块内容开始------*/
+.latest-blog-body{
+    background-color: rgba(255,255,255,0.8);
+    margin-top: 30px;
+    width: 95%;
+    float: left;
+
+}
+.latest-blog-body-image{
+    float: left;
+    width: 500px;
+    height:300px;
+
+}
+.latest-blog-body-right{
+
+    float: left;
+    width: 510px;
+    margin-left:10px;
+    text-align: center;
+}
+.latest-blog-body-right a{
+    text-decoration: none;
+    color:black;
+    transition: 0.3s;
+}
+.latest-blog-body-right a:hover{
+    text-decoration: none;
+    color:rgb(226, 185, 62);
+}
+.latest-blog-body-title{
+    text-align: center;
+    font-size: 35px;
+    float: left;
+    width: 500px;
+    hight:100px;
+
+}
+.latest-blog-body-describe{
+    margin-top: 20px;
+    float: left;
+    width: 500px;
+    height: 190px;
+
+}
+.latest-blog-body-bottom{
+    float: left;
+    width: 500px;
+    margin-top: 12px;
+}
+.latest-blog-body-ul{
+    list-style-type: none;
+    width:550px;
+}
+.latest-blog-body-li{
+    width:150px;
+    float: left;
+    height: 30px;
+    font-size:2px;
+    margin-left: 10px;
+    color:rgb(128, 128, 128);
+}
+
+.latest-blog-body-bottom-font{
+    font-size: 13px;
+}
+/*------博客模块内容结束------*/
+
+
+/********最近博客结束*******/
