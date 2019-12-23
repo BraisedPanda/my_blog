@@ -47,11 +47,16 @@ body, html { font-size: 100%; padding: 0; margin: 0;}
 }
 
 .grid figcaption h3 {
-	margin: 0;
+	margin-top: 10px;
+	margin-left: 10px;
 	padding: 0;
 	color: #fff;
 }
-
+.grid figcaption span {
+	margin-top: 10px;
+	margin-left: 10px;
+	padding: 0;
+}
 
 
 .grid figcaption a {

@@ -18,8 +18,8 @@ public class PageController {
         return new ModelAndView("mian");
     }
 
-    @RequestMapping("test")
+    @RequestMapping("/test")
     public ModelAndView test(){
-        return new ModelAndView("test");
+        return new ModelAndView("/test");
     }
 }

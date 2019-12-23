@@ -1,8 +1,9 @@
 body{
     background-image: url('/images/background.png');
 }
+/**********个人信息展示************/
 .person-info{
-    margin-left: 2%;
+    margin-left: 7%;
     width: 93%;
     height:250px;
 
@@ -43,15 +44,18 @@ body{
     text-decoration: none;
     color:black;
 }
+/**********个人信息展示结束************/
+
+/* ---------导航栏开始----------- */
 .nav-top{
     margin-top: 30px;
     width: 95%;
     float: left;
     height: 7%;
     position: relative;
-
 }
 .nav-top-ul{
+
     margin:0 auto;
     list-style-type: none;
 }
@@ -81,6 +85,8 @@ body{
     background-color: rgb(40, 185, 190);
     color:white;
 }
+/* ---------导航栏结束----------- */
+
 
 /********最近博客模块*******/
 
@@ -114,7 +120,7 @@ body{
     color: white;
     border-radius: 15px;
     background-color: rgb(169, 169, 169);
-    width: 60px;
+    width: 50px;
     float: right;
     text-align: center;
     line-height: 50px;
@@ -191,3 +197,40 @@ body{
 
 
 /********最近博客结束*******/
+
+/***全部博客***/
+.all-blog{
+    margin-top: 30px;
+    width: 95%;
+    float: left;
+    height: auto;
+    position: relative;
+
+}
+.all-blog-top{
+    width: 95%;
+    height:50px;
+    float: left;
+}
+.all-blog-top-left{
+    border-radius: 15px;
+    background-color: rgb(255, 99, 71);
+    width: 180px;
+    float: left;
+    text-align: center;
+    line-height: 50px;
+}
+.all-blog-top-left-title{
+    font-size: 25px;
+    color: white;
+}
+.all-blog-top-right{
+    color: white;
+    border-radius: 15px;
+    background-color: rgb(255, 99, 71);
+    width: 50px;
+    float: right;
+    text-align: center;
+    line-height: 50px;
+}
+/***全部博客结束***/

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8"/>
+    <title>Editor.md examples</title>
+    <link rel="stylesheet" href="/css/editormd.preview.css" />
+    <link rel="stylesheet" href="/css/editormd.css"/>
+</head>
+<body>
+<!-- 因为我们使用了dark主题，所以在容器div上加上dark的主题类，实现我们自定义的代码样式 -->
+<div class="content editormd-preview-theme" id="content">${editor.content!''}</div>
+<script src="js/jquery-3.4.1.js"></script>
+<script src="/lib/marked.min.js"></script>
+<script src="/lib/prettify.min.js"></script>
+<script src="/js/editormd.min.js"></script>
+<script type="text/javascript">
+    editormd.markdownToHTML("content");
+</script>
+</body>
+</html>l
