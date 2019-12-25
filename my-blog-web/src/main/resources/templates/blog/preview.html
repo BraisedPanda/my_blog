@@ -1,20 +1,42 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8"/>
     <title>Editor.md examples</title>
+
+    <link rel="stylesheet" href="/css/font-awesome.css">
+    <link rel="stylesheet" href="/css/bootstrap.css">
     <link rel="stylesheet" href="/css/editormd.preview.css" />
     <link rel="stylesheet" href="/css/editormd.css"/>
+    <link rel="stylesheet" href="/css/nav.css"/>
+    <link rel="stylesheet" href="/css/preview.css"/>
 </head>
-<body>
-<!-- 因为我们使用了dark主题，所以在容器div上加上dark的主题类，实现我们自定义的代码样式 -->
-<div class="content editormd-preview-theme" id="content">${editor.content!''}</div>
-<script src="js/jquery-3.4.1.js"></script>
+<body style="background-image: url('/images/background.png')">
+<!--上方导航条-->
+<nav class="navbar navbar-default navbar-fixed-top nav-top ">
+    <div class="container nav-top-container">
+        <ul class="nav-top-ul">
+            <a href="#" class="nav-top-a"><li class="nav-top-li active">首页</li></a>
+            <a href="#" class="nav-top-a"><li class="nav-top-li">首页2</li></a>
+            <a href="#" class="nav-top-a"><li class="nav-top-li">首页3</li></a>
+            <a href="#" class="nav-top-a"><li class="nav-top-li">首页4</li></a>
+            <a href="#" class="nav-top-a"><li class="nav-top-li">首页5</li></a>
+
+        </ul>
+
+    </div>
+</nav>
+
+<div class="content editormd-preview-theme" id="content-text" th:utext="${editor.content}" style="background-image: url('/images/background.png')"></div>
+<script src="/js/jquery-3.4.1.js"></script>
 <script src="/lib/marked.min.js"></script>
 <script src="/lib/prettify.min.js"></script>
+
+<script src="/js/bootstrap.js"></script>
 <script src="/js/editormd.min.js"></script>
 <script type="text/javascript">
-    editormd.markdownToHTML("content");
+
+    editormd.markdownToHTML("content-text");
 </script>
 </body>
 </html>l

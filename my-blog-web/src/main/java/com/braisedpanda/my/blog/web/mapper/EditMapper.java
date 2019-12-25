@@ -1,5 +1,5 @@
 package com.braisedpanda.my.blog.web.mapper;
-import com.braisedpanda.my.blog.commons.model.Editor;
+import com.braisedpanda.my.blog.commons.model.po.Editor;
 import tk.mybatis.mapper.common.Mapper;
 
 

@@ -20,6 +20,6 @@ public class PageController {
 
     @RequestMapping("/test")
     public ModelAndView test(){
-        return new ModelAndView("/test");
+        return new ModelAndView("/blog/edit");
     }
 }

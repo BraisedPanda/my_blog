@@ -1,10 +1,11 @@
 package com.braisedpanda.my.blog.web.service.impl;
 
-import com.braisedpanda.my.blog.commons.model.Editor;
+import com.braisedpanda.my.blog.commons.model.po.Editor;
 import com.braisedpanda.my.blog.web.mapper.EditMapper;
 import com.braisedpanda.my.blog.web.service.EditService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import tk.mybatis.mapper.entity.Example;
 
 /**
  * @program: my-blog
@@ -19,5 +20,17 @@ public class EditServiceImpl implements EditService{
     @Override
     public void insert(Editor editor) {
         editMapper.insert(editor);
+    }
+    
+    /** 
+    * @Description: 根据blog_id查找博客
+    */
+    @Override
+    public Editor findEditById(int id) {
+        Example example = new Example(Editor.class);
+        Example.Criteria criteria = example.createCriteria();
+        criteria.andEqualTo("blogId",id);
+        Editor editor = editMapper.selectOneByExample(example);
+        return editor;
     }
 }

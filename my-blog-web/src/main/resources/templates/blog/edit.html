@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <title>Simple example - Editor.md examples</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/editormd.css" />
+    <link rel="stylesheet" href="/css/font-awesome.css">
+    <link rel="stylesheet" href="/css/bootstrap.css">
+</head>
+<body style="background-image: url('images/background.png')">
+<!--上方导航条-->
+<nav class="navbar navbar-default navbar-fixed-top nav-top ">
+    <div class="container nav-top-container">
+        <ul class="nav-top-ul">
+            <a href="#" class="nav-top-a"><li class="nav-top-li active">首页</li></a>
+            <a href="#" class="nav-top-a"><li class="nav-top-li">首页2</li></a>
+            <a href="#" class="nav-top-a"><li class="nav-top-li">首页3</li></a>
+            <a href="#" class="nav-top-a"><li class="nav-top-li">首页4</li></a>
+            <a href="#" class="nav-top-a"><li class="nav-top-li">首页5</li></a>
+
+        </ul>
+
+    </div>
+</nav>
+<div class="head" style="margin-top: 20px">
+    <div style="width: 90%;margin-left: 5%">
+        <div class="form-group" >
+
+            <input type="text" class="form-control" id="title" placeholder="文章标题">
+        </div>
+        <div class="form-group">
+
+            <input type="text" class="form-control" id="imageurl" placeholder="封面图片URL地址">
+        </div>
+        <div class="form-group">
+
+            <input type="text" class="form-control" id="description" placeholder="文章简介">
+        </div>
+        <div class="form-group">
+        <select class="form-control" id="category" >
+            <option value="1">博客</option>
+            <option value="2">随笔</option>
+            <option value="3">心得</option>
+
+        </select>
+        </div>
+    </div>
+</div>
+<div id="layout">
+    <div id="test-editormd">
+                <textarea style="display:none;" id="textContent" name="textContent">
+
+[TOC]
+
+#### Disabled options
+
+- TeX (Based on KaTeX);
+- Emoji;
+- Task lists;
+- HTML tags decode;
+- Flowchart and Sequence Diagram;
+
+#### Editor.md directory
+
+    editor.md/
+            lib/
+            css/
+            scss/
+            tests/
+            fonts/
+            images/
+            plugins/
+            examples/
+            languages/
+            editormd.js
+            ...
+
+```html
+&lt;!-- English --&gt;
+&lt;script src="../dist/js/languages/en.js"&gt;&lt;/script&gt;
+
+&lt;!-- 繁體中文 --&gt;
+&lt;script src="../dist/js/languages/zh-tw.js"&gt;&lt;/script&gt;
+```
+
+
+</textarea>
+        <!-- 第二个隐藏文本域，用来构造生成的HTML代码，方便表单POST提交，这里的name可以任意取，后台接受时以这个name键为准 -->
+        <textarea id="text" class="editormd-html-textarea" name="text"></textarea>
+    </div>
+</div>
+<div class="submitbtn">
+    <button type="button" class="btn btn-success " onclick="saveHtml()">保存</button>
+</div>
+<script src="js/jquery-3.4.1.js"></script>
+<script src="js/editormd.min.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script type="text/javascript">
+    var testEditor;
+
+    $(function() {
+
+        testEditor = editormd("test-editormd", {
+            width: "90%",
+            height: 640,
+            syncScrolling: "single",
+            path: "../lib/",
+            imageUpload: true,
+            emoji: true,
+            imageFormats: ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
+            imageUploadURL: "/file",
+            //这个配置在simple.html中并没有，但是为了能够提交表单，使用这个配置可以让构造出来的HTML代码直接在第二个隐藏的textarea域中，方便post提交表单。
+            saveHTMLToTextarea: true
+            // previewTheme : "dark"
+        });
+
+    });
+    function saveHtml() {
+        // console.log($("#text").text());
+        console.log($("#textContent").text());
+        $.ajax({
+            url:  "/blog/insert",
+            type: "post",
+            async: true,
+            data: {
+                "title":$("#title").val(),
+                "imageurl":$("#imageurl").val(),
+                "description":$("#description").val(),
+                "category":$("#category").val(),
+                "content": $("#text").text(),
+                "textContent": $("#textContent").text()
+            },
+            dataType: "json",
+            success: function (result) {
+                console.log(result.message);
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+            }
+        });
+    }
+</script>
+</body>
+</html>

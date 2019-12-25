@@ -1,4 +1,4 @@
-package com.braisedpanda.my.blog.commons.model;
+package com.braisedpanda.my.blog.commons.model.po;
 
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -22,11 +22,11 @@ public class Editor {
     @Id
     @Column(name = "id")
     private Integer id;
-    @Column(name = "bid")
-    private Integer bid;
-    @Column(name = "context")
+    @Column(name = "blog_id")
+    private Integer blogId;
+    @Column(name = "content")
     private String content;
-    @Column(name = "textContent")
+    @Column(name = "text_content")
     private String textContent;
     @Column(name = "create_time")
     private String create_time;

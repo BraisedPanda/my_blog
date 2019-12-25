@@ -1,0 +1,43 @@
+
+
+/* ---------导航栏开始----------- */
+.nav-top{
+    margin-top: 30px;
+    width: 95%;
+    float: left;
+    height: 7%;
+    position: relative;
+}
+.nav-top-ul{
+
+    margin:0 auto;
+    list-style-type: none;
+}
+.nav-top-li{
+    margin-left: 15px;
+    float: left;
+    width:60px;
+    border-radius: 15px;
+    text-align: center;
+    line-height: 30px;
+    transition: 0.3s;
+}
+.nav-top-a{
+    text-decoration: none;
+    color:black;
+
+}
+.nav-top-a:hover{
+    color:white;
+    text-decoration: none;
+}
+.nav-top-li:hover{
+    background-color: rgb(40, 185, 190);
+    color:white;
+}
+.active{
+    background-color: rgb(40, 185, 190);
+    color:white;
+}
+/* ---------导航栏结束----------- */
+
