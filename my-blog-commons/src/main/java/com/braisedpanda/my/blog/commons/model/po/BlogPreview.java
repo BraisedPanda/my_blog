@@ -46,7 +46,7 @@ public class BlogPreview {
     private Integer views;
 
     @Column(name="category")
-    @ApiModelProperty(value="category", example = "1")
-    private Integer category;
+    @ApiModelProperty(value="category", example = "博客")
+    private String category;
 
 }

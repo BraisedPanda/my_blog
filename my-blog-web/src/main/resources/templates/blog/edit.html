@@ -3,27 +3,28 @@
 <head>
     <meta charset="utf-8" />
     <title>Simple example - Editor.md examples</title>
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/editormd.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/editormd.css" />
     <link rel="stylesheet" href="/css/font-awesome.css">
     <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/nav.css">
 </head>
-<body style="background-image: url('images/background.png')">
+<body style="background-image: url('/images/background.png')">
 <!--上方导航条-->
 <nav class="navbar navbar-default navbar-fixed-top nav-top ">
     <div class="container nav-top-container">
         <ul class="nav-top-ul">
-            <a href="#" class="nav-top-a"><li class="nav-top-li active">首页</li></a>
+            <a href="#" class="nav-top-a"><li class="nav-top-li ">首页</li></a>
             <a href="#" class="nav-top-a"><li class="nav-top-li">首页2</li></a>
             <a href="#" class="nav-top-a"><li class="nav-top-li">首页3</li></a>
-            <a href="#" class="nav-top-a"><li class="nav-top-li">首页4</li></a>
+            <a href="#" class="nav-top-a"><li class="nav-top-li active">写博客</li></a>
             <a href="#" class="nav-top-a"><li class="nav-top-li">首页5</li></a>
 
         </ul>
 
     </div>
 </nav>
-<div class="head" style="margin-top: 20px">
+<div class="head" >
     <div style="width: 90%;margin-left: 5%">
         <div class="form-group" >
 
@@ -38,12 +39,7 @@
             <input type="text" class="form-control" id="description" placeholder="文章简介">
         </div>
         <div class="form-group">
-        <select class="form-control" id="category" >
-            <option value="1">博客</option>
-            <option value="2">随笔</option>
-            <option value="3">心得</option>
-
-        </select>
+            <input type="text" class="form-control" id="category" placeholder="文章分类">
         </div>
     </div>
 </div>
@@ -93,8 +89,8 @@
 <div class="submitbtn">
     <button type="button" class="btn btn-success " onclick="saveHtml()">保存</button>
 </div>
-<script src="js/jquery-3.4.1.js"></script>
-<script src="js/editormd.min.js"></script>
+<script src="/js/jquery-3.4.1.js"></script>
+<script src="/js/editormd.min.js"></script>
 <script src="/js/bootstrap.js"></script>
 <script type="text/javascript">
     var testEditor;
@@ -133,10 +129,10 @@
             },
             dataType: "json",
             success: function (result) {
-                console.log(result.message);
+                alert("博客创建成功");
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
-
+                alert("博客创建失败");
             }
         });
     }

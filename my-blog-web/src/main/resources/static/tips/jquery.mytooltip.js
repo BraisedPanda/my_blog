@@ -640,7 +640,7 @@
 		 */
 		error: function (message) {
 
-			console.error(message);
+
 
 		}
 

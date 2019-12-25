@@ -61,5 +61,9 @@ public class EditController {
         modelAndView.setViewName("blog/preview");
         return modelAndView;
     }
-
+    @ApiOperation("新建博客")
+    @RequestMapping("/newBlog")
+    public ModelAndView test(){
+        return new ModelAndView("/blog/edit");
+    }
 }

@@ -33,4 +33,6 @@ public class EditServiceImpl implements EditService{
         Editor editor = editMapper.selectOneByExample(example);
         return editor;
     }
+
+
 }

@@ -17,12 +17,12 @@
     <nav class="nav navbar-nav  nav-left ">
         <div class="container nav-left-container">
             <ul class="nav-left-ul">
-                <li class="nav-left-icon-li"><a href="#" ><i class="fa fa-home fa-lg nav-left-inco" ></i></a></li>
-                <li class="nav-left-icon-li"><a href="#" ><i class="fa fa-book fa-lg nav-left-inco" ></i></a></li>
-                <li class="nav-left-icon-li"><a href="#" ><i class="fa fa-tags fa-lg nav-left-inco" ></i></a></li>
-                <li class="nav-left-icon-li"><a href="#" ><i class="fa fa-user fa-lg nav-left-inco" ></i></a></li>
-                <li class="nav-left-icon-li"><a href="#" ><i class="fa fa-star fa-lg nav-left-inco" ></i></a></li>
-                <li class="nav-left-icon-li"><a href="#" ><i class="fa fa-refresh fa-lg nav-left-inco" ></i></a></li>
+                <li class="nav-left-icon-li"><a href="javascript:void(0)" ><i class="fa fa-home fa-lg nav-left-inco" data-src="/index"></i></a></li>
+                <li class="nav-left-icon-li"><a href="javascript:void(0)" ><i class="fa fa-book fa-lg nav-left-inco" ></i></a></li>
+                <li class="nav-left-icon-li"><a href="javascript:void(0)" ><i class="fa fa-tags fa-lg nav-left-inco" ></i></a></li>
+                <li class="nav-left-icon-li"><a href="javascript:void(0)" ><i class="fa fa-pencil fa-lg nav-left-inco" data-src="/blog/newBlog"></i></a></li>
+                <li class="nav-left-icon-li"><a href="javascript:void(0)" ><i class="fa fa-star fa-lg nav-left-inco" ></i></a></li>
+                <li class="nav-left-icon-li"><a href="javascript:void(0)" ><i class="fa fa-refresh fa-lg nav-left-inco" ></i></a></li>
             </ul>
 
         </div>
@@ -31,15 +31,25 @@
 
     <!--中间内容-->
     <section class="iframe" >
-         <iframe src="blog/view/7" style="height: 100%;width: 100%" scrolling="yes" frameborder="0">
+         <iframe src="index" style="height: 100%;width: 100%" scrolling="yes" frameborder="0" id="iframe">
 
         </iframe>
     </section>
 
     <script src="/js/jquery-3.4.1.js"></script>
+
     <script src="/js/bootstrap.js"></script>
     <script src="js/modernizr.custom.js"></script>
+    <script>
+        $(function () {
+            $(".fa").click(function () {
+                var url = $(this).attr("data-src");
+                $("#iframe").attr("src",url);
 
+            });
+        })
+    </script>
 
 </body>
+
 </html>
