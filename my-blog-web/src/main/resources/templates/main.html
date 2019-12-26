@@ -11,16 +11,12 @@
     <link rel="stylesheet" href="/tips/jquery.mytooltip.css">
     <link rel="stylesheet" href="/tips/style.css">
     <link rel="stylesheet" type="text/css" href="/css/nav.css">
+    <link rel="stylesheet" type="text/css" href="/css/scrollbar.css">
     <link rel="stylesheet" type="text/css" href="/css/pic-hover/style.css">
 
-
 </head>
-<style>
 
-</style>
-
-
-<body>
+<body >
 
 <!--上方导航条-->
 <nav class="navbar navbar-default navbar-fixed-top nav-top ">
@@ -36,10 +32,7 @@
 
     </div>
 </nav>
-
-
-
-<!--中间内容-->
+<!--个人信息框-->
 <section class="person-info">
     <div class="person-image">
 
@@ -63,10 +56,7 @@
         </ul>
     </div>
 </section>
-
-
-
-<!--最新博客-->
+<!--置顶博客-->
 <section class="latest-blog">
     <div class="container latest-blog-container">
         <div class="latest-blog-top">
@@ -164,6 +154,7 @@
         </div>
     </div>
 </section>
+<!--右下角固定导航栏-->
 <section class="fix-nav">
     <ul class="fix-nav-ul">
         <li class="fix-nav-li" onclick="gotop();"><i class="fa fa-arrow-up fa-lg" aria-hidden="true"></i></li>
@@ -171,6 +162,7 @@
         <a href="/index"><li class="fix-nav-li"><i class="fa fa-home fa-lg" aria-hidden="true"></i></li></a>
     </ul>
 </section>
+<!--页脚部分-->
 <footer class="footer" style="background-image: url('/images/footer.png'); background-size: 80%;">
     <div class="text1">Copyright &copy;2019 BraisedPanda</div>
     <div class="text2">Design By BraisedPanda and reference to innei.ren</div>
@@ -188,16 +180,16 @@
 <script src="/js/text/text.js"></script>
 <script>
     $(function () {
-
+        /**鼠标悬停提示**/
         $('[data-toggle="tooltip"]').tooltip();
-
-
+        /**加载看板娘**/
             $(".movie").hover3d({
                 selector: ".movie__card",
                 shine: true,
 
                 sensitivity: 20
             });
+        /**文字霓虹灯特效**/
         $('#name').neonText({
             textColor:'rgb(47, 44, 51)',
             textSize:'30px',
