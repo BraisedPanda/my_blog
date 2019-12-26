@@ -47,39 +47,8 @@
 <div id="layout">
     <div id="test-editormd">
                 <textarea style="display:none;" id="textContent" name="textContent">
+> 开始你的博客吧~
 
-[TOC]
-
-#### Disabled options
-
-- TeX (Based on KaTeX);
-- Emoji;
-- Task lists;
-- HTML tags decode;
-- Flowchart and Sequence Diagram;
-
-#### Editor.md directory
-
-    editor.md/
-            lib/
-            css/
-            scss/
-            tests/
-            fonts/
-            images/
-            plugins/
-            examples/
-            languages/
-            editormd.js
-            ...
-
-```html
-&lt;!-- English --&gt;
-&lt;script src="../dist/js/languages/en.js"&gt;&lt;/script&gt;
-
-&lt;!-- 繁體中文 --&gt;
-&lt;script src="../dist/js/languages/zh-tw.js"&gt;&lt;/script&gt;
-```
 
 
 </textarea>
@@ -90,6 +59,13 @@
 <div class="submitbtn">
     <button type="button" class="btn btn-success " onclick="saveHtml()">保存</button>
 </div>
+<footer class="fix-nav">
+    <ul class="fix-nav-ul">
+        <li class="fix-nav-li" onclick="gotop();"><i class="fa fa-arrow-up fa-lg" aria-hidden="true"></i></li>
+        <li class="fix-nav-li" onclick="gohistory();"><i class="fa fa-history fa-lg" aria-hidden="true"></i></li>
+        <a href="/index"><li class="fix-nav-li"><i class="fa fa-home fa-lg" aria-hidden="true"></i></li></a>
+    </ul>
+</footer>
 <script src="/js/jquery-3.4.1.js"></script>
 <script src="/js/editormd.min.js"></script>
 <script src="/js/bootstrap.js"></script>

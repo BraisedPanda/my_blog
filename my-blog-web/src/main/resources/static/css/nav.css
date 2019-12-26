@@ -5,8 +5,9 @@
     margin-top: 30px;
     width: 95%;
     float: left;
-    height: 7%;
+    height: 50px;
     position: relative;
+
 }
 .nav-top-ul{
 
@@ -17,6 +18,7 @@
     margin-left: 15px;
     float: left;
     width:60px;
+    height: 30px;
     border-radius: 15px;
     text-align: center;
     line-height: 30px;
@@ -41,3 +43,33 @@
 }
 /* ---------导航栏结束----------- */
 
+/*****右下角固定导航条*******/
+.fix-nav{
+    position: fixed;
+    bottom:20px;
+    right: 40px;
+    height: 150px;
+
+}
+.fix-nav-ul{
+    text-align: center;
+    list-style-type: none;
+    width: 50px;
+
+}
+.fix-nav-li{
+    color:rgb(121, 85, 72);
+    line-height: 40px;
+    width:45px;
+    height: 45px;
+    background-color: white;
+    margin-top: 10px;
+    border-radius: 50%;
+    box-shadow: 1px 3px 5px 4px rgba(245, 222, 179,0.8);
+    transition: 0.7s;
+}
+.fix-nav-li:hover{
+    cursor: pointer;
+    box-shadow: 0px 0px 3px 7px rgba(245, 222, 179,1);
+}
+/*****右下角固定导航条结束*******/

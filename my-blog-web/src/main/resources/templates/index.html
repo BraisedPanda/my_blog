@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="/css/font-awesome.css">
     <link rel="stylesheet" href="/css/bootstrap.css">
-    <script src="/js/loading.js"></script>
+
 
 
 </head>
@@ -36,17 +36,21 @@
         </iframe>
     </section>
 
-    <script src="/js/jquery-3.4.1.js"></script>
 
+
+    <script src="/js/jquery-3.4.1.js"></script>
+    <script src="/js/loading.js"></script>
     <script src="/js/bootstrap.js"></script>
     <script src="js/modernizr.custom.js"></script>
     <script>
         $(function () {
+
             $(".fa").click(function () {
                 var url = $(this).attr("data-src");
                 $("#iframe").attr("src",url);
 
             });
+
         })
     </script>
 

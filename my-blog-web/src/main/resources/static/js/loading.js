@@ -24,3 +24,16 @@ function completeLoading() {
         loadingMask.parentNode.removeChild(loadingMask);
     }
 }
+
+gotop = function () {
+    $('html,body').animate({
+        scrollTop: 0
+    }, 500);
+
+};
+gohistory = function () {
+    history.go(-1);
+
+}
+
+

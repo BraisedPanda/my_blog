@@ -29,6 +29,13 @@
 </nav>
 
 <div class="content editormd-preview-theme" id="content-text" th:utext="${editor.content}" style="background-image: url('/images/background.png')"></div>
+<footer class="fix-nav">
+    <ul class="fix-nav-ul" style="margin-right: 30px">
+        <li class="fix-nav-li" onclick="gotop();"><i class="fa fa-arrow-up fa-lg" aria-hidden="true"></i></li>
+        <li class="fix-nav-li" onclick="gohistory();"><i class="fa fa-history fa-lg" aria-hidden="true"></i></li>
+        <a href="/index"><li class="fix-nav-li"><i class="fa fa-home fa-lg" aria-hidden="true"></i></li></a>
+    </ul>
+</footer>
 <script src="/js/jquery-3.4.1.js"></script>
 <script src="/lib/marked.min.js"></script>
 <script src="/lib/prettify.min.js"></script>
