@@ -1,0 +1,25 @@
+
+.movie {
+  float: left; }
+  .movie-list:after {
+    content: " ";
+    display: block;
+    clear: both; }
+  .movie__card {
+    position: relative;
+    width: 500px;
+    height:300px; }
+    .movie__card.hover-in {
+      transition: .3s ease-out; }
+    .movie__card.hover-out {
+      transition: .3s ease-in; }
+  .movie [class*="layer"] {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 10px; }
+
+  .movie .shine {
+    border-radius: 10px; }

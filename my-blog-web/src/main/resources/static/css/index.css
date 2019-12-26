@@ -8,7 +8,7 @@
 
 .nav-left{
     float: left;
-    background-color: #17a2b8;
+    background-image: url("/images/background.png");
     margin:auto 0;
     width:5%;
     height: 100%;
@@ -18,7 +18,8 @@
 
     float: left;
     text-align: center;
-    background-color: wheat;
+
+    background-color: rgba(254, 255, 255,0.8);
 
 }
 .nav-left-ul{
@@ -30,22 +31,23 @@
     height: auto;
 }
 .nav-left-ul li{
-    margin-top: 20px;
-    height: 30px;
-
+    margin-top: 15px;
+    height: 35px;
+    line-height: 35px;
+    transition: 0.3s;
 }
+
 .nav-left-inco{
     transition: 0.3s;
     color: rgb(121, 85, 72);
 }
 .nav-left-inco:hover{
-    font-size: 27px;
-
+    font-size: 30px;
 }
 
 .iframe{
     border: none;
     width: 95%;
-    height: 93%;
+    height: 100%;
     float: left;
 }

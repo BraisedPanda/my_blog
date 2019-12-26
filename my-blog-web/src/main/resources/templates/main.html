@@ -10,18 +10,13 @@
     <link rel="stylesheet" href="/css/font-awesome.css">
     <link rel="stylesheet" href="/tips/jquery.mytooltip.css">
     <link rel="stylesheet" href="/tips/style.css">
-    <link rel="stylesheet" type="text/css" href="/css/lrtk.css">
     <link rel="stylesheet" type="text/css" href="/css/nav.css">
+    <link rel="stylesheet" type="text/css" href="/css/pic-hover/style.css">
+
 
 </head>
 <style>
-    .my-tooltip{
-        border-radius: 10px;
-        width: 90px;
-        background-color: wheat;
-        color:black;
-        text-align: center;
-    }
+
 </style>
 
 
@@ -47,11 +42,13 @@
 <!--中间内容-->
 <section class="person-info">
     <div class="person-image">
+
         <img src="/images/touxiang.png" style="width: 220px;height: auto;" >
+
     </div>
     <div class="person-info-details">
         <ul class="person-info-ul">
-            <li class="person-info-li"><div class="name">学习使我快乐</div></li>
+            <li class="person-info-li"><div class="name" id="name">BraisedPanda</div></li>
             <li class="person-info-li"><div class="name">对潇潇暮雨洒江天</div></li>
             <li class="person-info-li">
                 <ul class="person-info-li-ul">
@@ -66,6 +63,7 @@
         </ul>
     </div>
 </section>
+
 
 
 <!--最新博客-->
@@ -86,20 +84,12 @@
 
             <div class="latest-blog-body-image">
                 <a th:href="@{/blog/view/{id}(id=${list.id})}">
-                    <ul class="grid">
 
-                        <li class="cs-style-3">
-                            <figure>
-                                <div><img th:src="${list.imageurl}" alt="img02"></div>
-                                <figcaption>
-                                    <h4>&nbsp;[[${list.title}]]</h4>
-                                    <span>&nbsp;[[${list.createTime}]]</span>
-
-                                </figcaption>
-                            </figure>
-                        </li>
-
-                    </ul>
+                    <div class="movie">
+                    <div class="movie__card">
+                        <img th:src="${list.imageurl}" class="show-img" alt="img02">
+                    </div>
+                    </div>
                 </a>
             </div>
             <div class="latest-blog-body-right">
@@ -144,20 +134,12 @@
 
             <div class="latest-blog-body-image">
                 <a th:href="@{/blog/view/{id}(id=${list.id})}">
-                    <ul class="grid">
+                    <div class="movie">
+                        <div class="movie__card">
+                    <img th:src="${list.imageurl}" alt="img02" class="show-img">
+                        </div>
+                    </div>
 
-                        <li class="cs-style-3">
-                            <figure>
-                                <div><img th:src="${list.imageurl}" alt="img02"></div>
-                                <figcaption>
-                                    <h4>&nbsp;[[${list.title}]]</h4>
-                                    <span>&nbsp;[[${list.createTime}]]</span>
-
-                                </figcaption>
-                            </figure>
-                        </li>
-
-                    </ul>
                 </a>
             </div>
             <div class="latest-blog-body-right">
@@ -182,14 +164,17 @@
         </div>
     </div>
 </section>
-<footer class="fix-nav">
+<section class="fix-nav">
     <ul class="fix-nav-ul">
         <li class="fix-nav-li" onclick="gotop();"><i class="fa fa-arrow-up fa-lg" aria-hidden="true"></i></li>
         <li class="fix-nav-li" onclick="gohistory();"><i class="fa fa-history fa-lg" aria-hidden="true"></i></li>
         <a href="/index"><li class="fix-nav-li"><i class="fa fa-home fa-lg" aria-hidden="true"></i></li></a>
     </ul>
+</section>
+<footer class="footer" style="background-image: url('/images/footer.png'); background-size: 80%;">
+    <div class="text1">Copyright &copy;2019 BraisedPanda</div>
+    <div class="text2">Design By BraisedPanda and reference to innei.ren</div>
 </footer>
-
 
 
 
@@ -199,11 +184,28 @@
 <script src="/tips/script.js"></script>
 <script src="/js/modernizr.custom.js"></script>
 <script src="/js/loading.js"></script>
-
+<script src="/js/pic-hover/jquery.hover3d.js"></script>
+<script src="/js/text/text.js"></script>
 <script>
     $(function () {
 
         $('[data-toggle="tooltip"]').tooltip();
+
+
+            $(".movie").hover3d({
+                selector: ".movie__card",
+                shine: true,
+
+                sensitivity: 20
+            });
+        $('#name').neonText({
+            textColor:'rgb(47, 44, 51)',
+            textSize:'30px',
+            neonHighlight:'white',
+            neonHighlightColor:'#FFFF00',
+            neonHighlightHover:'#008000',
+            neonFontHover:'rgb(47, 44, 51)'
+        });
 
 
     });

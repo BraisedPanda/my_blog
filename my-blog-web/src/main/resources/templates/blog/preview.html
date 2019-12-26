@@ -28,13 +28,17 @@
     </div>
 </nav>
 
-<div class="content editormd-preview-theme" id="content-text" th:utext="${editor.content}" style="background-image: url('/images/background.png')"></div>
-<footer class="fix-nav">
+<div class="content editormd-preview-theme" id="content-text" th:utext="${editor.content}" style="background: none"></div>
+<section class="fix-nav">
     <ul class="fix-nav-ul" style="margin-right: 30px">
         <li class="fix-nav-li" onclick="gotop();"><i class="fa fa-arrow-up fa-lg" aria-hidden="true"></i></li>
         <li class="fix-nav-li" onclick="gohistory();"><i class="fa fa-history fa-lg" aria-hidden="true"></i></li>
         <a href="/index"><li class="fix-nav-li"><i class="fa fa-home fa-lg" aria-hidden="true"></i></li></a>
     </ul>
+</section>
+<footer class="footer" style="background-image: url('/images/footer.png'); background-size: 80%;">
+    <div class="text1">Copyright &copy;2019 BraisedPanda</div>
+    <div class="text2">Design By BraisedPanda and reference to innei.ren</div>
 </footer>
 <script src="/js/jquery-3.4.1.js"></script>
 <script src="/lib/marked.min.js"></script>
@@ -42,9 +46,17 @@
 
 <script src="/js/bootstrap.js"></script>
 <script src="/js/editormd.min.js"></script>
+<script type="text/javascript" charset="utf-8"  src="/js/Live2D/L2Dwidget.0.min.js"></script>
+<script type="text/javascript" charset="utf-8"  src="/js/Live2D/L2Dwidget.min.js"></script>
 <script type="text/javascript">
-
     editormd.markdownToHTML("content-text");
+    L2Dwidget.init({ "model": { jsonPath:
+        "https://unpkg.com/live2d-widget-model-koharu@1.0.5/assets/koharu.model.json  ",
+        "scale": 1 }, "display": { "position": "left", "width": 150, "height": 300,
+        "hOffset": -20, "vOffset": -30 }, "mobile": { "show": true, "scale": 0.5 },
+        "react": { "opacityDefault": 0.7, "opacityOnHover": 0.2 } });
+
+
 </script>
 </body>
 </html>l

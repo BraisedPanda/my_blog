@@ -8,6 +8,9 @@ body{
     height:250px;
 
 }
+#name{
+    font-family: "Segoe UI Semilight";
+}
 .person-image{
     float: left;
     height: 100%;
@@ -193,3 +196,8 @@ body{
     line-height: 50px;
 }
 /***全部博客结束***/
+.show-img{
+    width: 500px;
+    height:300px;
+    border-radius: 15px;
+}
