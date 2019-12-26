@@ -34,7 +34,7 @@ public class BlogPreview {
     private String description;
 
     @Column(name="top")
-    @ApiModelProperty(value="top", example = "1:置顶")
+    @ApiModelProperty(value="top", example = "1")
     private Integer top;
 
     @Column(name="create_time")

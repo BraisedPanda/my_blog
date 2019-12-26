@@ -18,7 +18,7 @@ import java.util.List;
  * @author: chenzhen
  * @create: 2019-12-20 15:41
  **/
-@Api(tags = "页面跳转", description = "主页面跳转和数据渲染")
+@Api(tags = "页面跳转类", description = "主页面跳转和数据渲染")
 @RestController
 public class PageController {
     @Autowired

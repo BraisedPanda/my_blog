@@ -7,17 +7,11 @@ import com.braisedpanda.my.blog.commons.utils.DateUtils;
 import com.braisedpanda.my.blog.web.service.BlogPreviewService;
 import com.braisedpanda.my.blog.web.service.EditService;
 import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiModelProperty;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * @program: my-blog
@@ -35,14 +29,14 @@ public class EditController {
     private BlogPreviewService blogpreviewService;
     @ApiOperation("插入markdown")
     @PostMapping("/insert")
-    public ResponseStatus editorWeb(Editor editor, BlogPreview blogPreview){
+    public ResponseStatus insertEditor(Editor editor, BlogPreview blogPreview){
         /*首先保存预览对象*/
         String createDate = DateUtils.currentStandardDate();
         blogPreview.setCreateTime(createDate);
         blogPreview.setViews(0);
         blogPreview.setTop(0);
         blogpreviewService.insertBlogPreview(blogPreview);
-         /*保存markdown*/
+        /*保存markdown*/
         int blogId = blogPreview.getId();
         editor.setBlogId(blogId);
         editor.setCreate_time(createDate);
@@ -53,7 +47,7 @@ public class EditController {
 
 
     @ApiOperation("查看博客")
-    @RequestMapping("/view/{id}")
+    @GetMapping("/view/{id}")
     public ModelAndView preview(@PathVariable(value = "id") int id) {
         ModelAndView modelAndView = new ModelAndView();
         Editor editor = editService.findEditById(id);
@@ -61,9 +55,39 @@ public class EditController {
         modelAndView.setViewName("blog/preview");
         return modelAndView;
     }
+
     @ApiOperation("新建博客")
-    @RequestMapping("/newBlog")
-    public ModelAndView test(){
-        return new ModelAndView("/blog/edit");
+    @GetMapping("/newBlog")
+    public ModelAndView newBlog(){
+        return new ModelAndView("/blog/insert");
     }
+
+    @ApiOperation("编辑博客(回显)")
+    @GetMapping("/edit/{id}")
+    public ModelAndView toeditEditor(@PathVariable(value="id") int id){
+        ModelAndView modelAndView = new ModelAndView();
+        Editor editor = editService.findEditById(id);
+        modelAndView.addObject("editor",editor);
+        modelAndView.setViewName("blog/edit");
+        return modelAndView;
+    }
+
+    @ApiOperation("编辑博客(存入数据库)")
+    @PostMapping("/edit/{id}")
+    public ResponseStatus editEditor(Editor editor, BlogPreview blogPreview){
+        /*首先保存预览对象*/
+        String createDate = DateUtils.currentStandardDate();
+        blogPreview.setCreateTime(createDate);
+
+
+        blogpreviewService.insertBlogPreview(blogPreview);
+        /*保存markdown*/
+        int blogId = blogPreview.getId();
+        editor.setBlogId(blogId);
+        editor.setCreate_time(createDate);
+        editService.insert(editor);
+
+        return  ResponseStatus.success("插入markdown成功");
+    }
+
 }

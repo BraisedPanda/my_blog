@@ -3,13 +3,13 @@
 <head>
     <meta charset="utf-8" />
     <title>Simple example - Editor.md examples</title>
-    <link rel="stylesheet" th:href="@{/css/style.css}" />
-    <link rel="stylesheet" th:href="@{/css/editormd.css}" />
-    <link rel="stylesheet" th:href="@{/css/font-awesome.css}">
-    <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
-    <link rel="stylesheet" th:href="@{/css/nav.css}">
-    <link rel="stylesheet" type="text/css" th:href="@{/css/scrollbar.css}">
-    <script th:src="@{/js/loading.js}"></script>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/editormd.css" />
+    <link rel="stylesheet" href="/css/font-awesome.css">
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/nav.css">
+    <link rel="stylesheet" type="text/css" href="/css/scrollbar.css">
+    <script src="/js/loading.js"></script>
 </head>
 <body style="background-image: url('/images/background.png')">
 <!--上方导航条-->
@@ -45,10 +45,9 @@
         </div>
     </div>
 </div>
-<input type="hidden" th:value="${editor.id}" id = "editorId">
 <div id="layout">
     <div id="test-editormd">
-                <textarea style="display:none;" id="textContent" name="textContent" th:text="${editor.textContent}">
+                <textarea style="display:none;" id="textContent" name="textContent">
 > 开始你的博客吧~
 
 
@@ -72,9 +71,9 @@
     <div class="text1">Copyright &copy;2019 BraisedPanda</div>
     <div class="text2">Design By BraisedPanda and reference to innei.ren</div>
 </footer>
-<script th:src="@{/js/jquery-3.4.1.js}"></script>
-<script th:src="@{/js/editormd.min.js}"></script>
-<script th:src="@{/js/bootstrap.js}"></script>
+<script src="/js/jquery-3.4.1.js"></script>
+<script src="/js/editormd.min.js"></script>
+<script src="/js/bootstrap.js"></script>
 <script type="text/javascript">
     var testEditor;
 
@@ -84,7 +83,7 @@
             width: "90%",
             height: 640,
             syncScrolling: "single",
-            path: "/lib/",
+            path: "../lib/",
             imageUpload: true,
             emoji: true,
             imageFormats: ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
@@ -96,11 +95,10 @@
 
     });
     function saveHtml() {
-        var id = $("#editorId").val();
-        var url = "/blog/edit/"+id;
-        console.log(url);
+        // console.log($("#text").text());
+        console.log($("#textContent").text());
         $.ajax({
-            url:  url,
+            url:  "/blog/insert",
             type: "post",
             async: true,
             data: {
