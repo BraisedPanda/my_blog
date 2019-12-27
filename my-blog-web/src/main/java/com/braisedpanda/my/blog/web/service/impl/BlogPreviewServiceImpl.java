@@ -59,5 +59,33 @@ public class BlogPreviewServiceImpl implements BlogPreviewService{
 
         return pageInfo.getList();
     }
-
+    /** 
+    * @Description: 根据id查找BlogPreview对象
+    * @Param: [id]
+    * @Date: 2019/12/27 0027 
+    */ 
+    @Override
+    public BlogPreview getBlogPreviewById(int id) {
+        BlogPreview blogPreview = blogPreviewMapper.selectByPrimaryKey(id);
+        return blogPreview;
+    }
+    
+    /** 
+    * @Description: 更新
+    * @Param: [blogPreview]
+    * @Date: 2019/12/27 0027 
+    */ 
+    @Override
+    public void updateBlogPreview(BlogPreview blogPreview) {
+        blogPreviewMapper.updateByPrimaryKeySelective(blogPreview);
+    }
+    /** 
+    * @Description: 根据ID删除博客预览
+    * @Param: [blogId]
+    * @Date: 2019/12/27 0027 
+    */ 
+    @Override
+    public void deleteById(Integer blogId) {
+        blogPreviewMapper.deleteByPrimaryKey(blogId);
+    }
 }

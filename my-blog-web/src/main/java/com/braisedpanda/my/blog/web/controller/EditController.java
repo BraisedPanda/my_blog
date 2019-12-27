@@ -51,6 +51,7 @@ public class EditController {
     public ModelAndView preview(@PathVariable(value = "id") int id) {
         ModelAndView modelAndView = new ModelAndView();
         Editor editor = editService.findEditById(id);
+        modelAndView.addObject("id",id);
         modelAndView.addObject("editor",editor);
         modelAndView.setViewName("blog/preview");
         return modelAndView;
@@ -67,27 +68,40 @@ public class EditController {
     public ModelAndView toeditEditor(@PathVariable(value="id") int id){
         ModelAndView modelAndView = new ModelAndView();
         Editor editor = editService.findEditById(id);
+        BlogPreview blogPreview = blogpreviewService.getBlogPreviewById(id);
         modelAndView.addObject("editor",editor);
+        modelAndView.addObject("blogPreview",blogPreview);
         modelAndView.setViewName("blog/edit");
         return modelAndView;
     }
 
     @ApiOperation("编辑博客(存入数据库)")
     @PostMapping("/edit/{id}")
-    public ResponseStatus editEditor(Editor editor, BlogPreview blogPreview){
+    public ResponseStatus editEditor(Editor editor, BlogPreview blogPreview, Integer editorId, Integer blogId){
         /*首先保存预览对象*/
-        String createDate = DateUtils.currentStandardDate();
-        blogPreview.setCreateTime(createDate);
-
-
-        blogpreviewService.insertBlogPreview(blogPreview);
-        /*保存markdown*/
-        int blogId = blogPreview.getId();
+        blogPreview.setId(blogId);
         editor.setBlogId(blogId);
-        editor.setCreate_time(createDate);
-        editService.insert(editor);
+        editor.setId(editorId);
+        System.out.println(editor);
+        System.out.println(blogPreview);
+
+        blogpreviewService.updateBlogPreview(blogPreview);
+        /*保存markdown*/
+
+        editService.updateEditor(editor);
 
         return  ResponseStatus.success("插入markdown成功");
     }
+
+    @ApiOperation("删除博客")
+    @DeleteMapping("/delete/{id}")
+    public ResponseStatus deleteBlog(@PathVariable(value="id") Integer id, Integer blogId){
+        System.out.println(id);
+        System.out.println(blogId);
+        editService.deleteById(id);
+        blogpreviewService.deleteById(blogId);
+        return  ResponseStatus.success("插入markdown成功");
+    }
+
 
 }

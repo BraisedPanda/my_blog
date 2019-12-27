@@ -30,22 +30,24 @@
     <div style="width: 90%;margin-left: 5%">
         <div class="form-group" >
 
-            <input type="text" class="form-control" id="title" placeholder="文章标题">
+            <input type="text" class="form-control" id="title" placeholder="文章标题" th:value="${blogPreview.title}">
         </div>
         <div class="form-group">
 
-            <input type="text" class="form-control" id="imageurl" placeholder="封面图片URL地址">
+            <input type="text" class="form-control" id="imageurl" placeholder="封面图片URL地址" th:value="${blogPreview.imageurl}">
         </div>
         <div class="form-group">
 
-            <input type="text" class="form-control" id="description" placeholder="文章简介">
+            <input type="text" class="form-control" id="description" placeholder="文章简介" th:value="${blogPreview.description}">
         </div>
         <div class="form-group">
-            <input type="text" class="form-control" id="category" placeholder="文章分类">
+            <input type="text" class="form-control" id="category" placeholder="文章分类" th:value="${blogPreview.category}">
         </div>
     </div>
 </div>
 <input type="hidden" th:value="${editor.id}" id = "editorId">
+<input type="hidden" th:value="${editor.blogId}" id = "blogId">
+
 <div id="layout">
     <div id="test-editormd">
                 <textarea style="display:none;" id="textContent" name="textContent" th:text="${editor.textContent}">
@@ -97,6 +99,7 @@
     });
     function saveHtml() {
         var id = $("#editorId").val();
+        var blogId = $("#blogId").val();
         var url = "/blog/edit/"+id;
         console.log(url);
         $.ajax({
@@ -104,6 +107,9 @@
             type: "post",
             async: true,
             data: {
+                "editorId":id,
+                "blogId":blogId,
+
                 "title":$("#title").val(),
                 "imageurl":$("#imageurl").val(),
                 "description":$("#description").val(),
@@ -113,7 +119,10 @@
             },
             dataType: "json",
             success: function (result) {
-                alert("博客创建成功");
+                alert("编辑成功");
+                var junmurl =  "/blog/view/"+blogId;
+
+                window.location.href = junmurl;
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
                 alert("博客创建失败");

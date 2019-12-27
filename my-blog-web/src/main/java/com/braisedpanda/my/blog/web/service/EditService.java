@@ -6,4 +6,8 @@ public interface EditService {
     void insert(Editor editor);
 
     Editor findEditById(int id);
+
+    void updateEditor(Editor editor);
+
+    void deleteById(Integer id);
 }

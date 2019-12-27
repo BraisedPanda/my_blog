@@ -28,8 +28,56 @@
 
     </div>
 </nav>
+<!------是否确认删除模态框-------->
+<div class="modal fade" tabindex="-1" role="dialog" id="deleteBlogModel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">提示</h4>
+            </div>
+            <div class="modal-body">
+                <p>确定是要删除这篇博客吗？</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">手滑了...</button>
+                <button type="button" class="btn btn-danger" onclick="deleteBlog()">确认删除</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
+<!------删除成功提示-------->
+<div class="modal fade" tabindex="-1" role="dialog" id="deleteSuccessModel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">提示</h4>
+            </div>
+            <div class="modal-body">
+                <p>删除成功</p>
+            </div>
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-success" onclick="confirmDelete()">确定</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!------模态框结束-------->
+<input type="hidden" th:value="${editor.id}" id="editorId">
+<input type="hidden" th:value="${editor.blogId}" id="bolgId">
+<!-------右上角博客编辑模块------->
+<section class="edit-nav">
+    <ul class="edit-nav-ul" style="margin-right: 30px">
+        <a href="/blog/newBlog"><li class="edit-nav-li"><i class="fa fa-plus fa-lg" aria-hidden="true"></i></li></a>
+        <a th:href="@{/blog/edit/{id}(id = ${id})}"><li class="edit-nav-li" onclick="gohistory();"><i class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i></li></a>
+        <a data-toggle="modal" data-target="#deleteBlogModel"><li class="edit-nav-li"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i></li></a>
+    </ul>
+</section>
+
+<!-------博客内容模块------->
 <div class="content editormd-preview-theme" id="content-text" th:utext="${editor.content}" style="background: none"></div>
+<!-------右下角固定导航模块------->
 <section class="fix-nav">
     <ul class="fix-nav-ul" style="margin-right: 30px">
         <li class="fix-nav-li" onclick="gotop();"><i class="fa fa-arrow-up fa-lg" aria-hidden="true"></i></li>
@@ -37,6 +85,7 @@
         <a href="/index"><li class="fix-nav-li"><i class="fa fa-home fa-lg" aria-hidden="true"></i></li></a>
     </ul>
 </section>
+<!-------页脚模块------->
 <footer class="footer" style="background-image: url('/images/footer.png'); background-size: 80%;">
     <div class="text1">Copyright &copy;2019 BraisedPanda</div>
     <div class="text2">Design By BraisedPanda and reference to innei.ren</div>
@@ -47,7 +96,7 @@
 
 <script src="/js/bootstrap.js"></script>
 <script src="/js/editormd.min.js"></script>
-<script type="text/javascript" charset="utf-8"  src="/js/Live2D/L2Dwidget.0.min.js"></script>
+
 <script type="text/javascript" charset="utf-8"  src="/js/Live2D/L2Dwidget.min.js"></script>
 <script type="text/javascript">
     editormd.markdownToHTML("content-text");
@@ -57,6 +106,29 @@
         "hOffset": -20, "vOffset": -30 }, "mobile": { "show": true, "scale": 0.5 },
         "react": { "opacityDefault": 0.7, "opacityOnHover": 0.2 } });
 
+    deleteBlog = function () {
+        var id = $("#editorId").val();
+        var blogId = $("#bolgId").val();
+        $.ajax({
+            type: 'delete',
+            url: '/blog/delete/'+id ,
+            data:{
+                blogId: blogId
+            },
+            success:function () {
+               $('#deleteBlogModel').modal('hide');
+                $('#deleteSuccessModel').modal('show');
+        },
+            error:function () {
+                $('#deleteBlogModel').modal('hide');
+                alert("删除失败");
+            }
+        });
+    }
+    confirmDelete = function () {
+        $('#deleteSuccessModel').modal('hide');
+        window.location.href = "/index";
+    }
 
 </script>
 </body>

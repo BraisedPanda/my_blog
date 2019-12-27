@@ -10,4 +10,10 @@ public interface BlogPreviewService {
     List<BlogPreview> getTopBlogPreview();
 
     List<BlogPreview> getleatestBlogPreview();
+
+    BlogPreview getBlogPreviewById(int id);
+
+    void updateBlogPreview(BlogPreview blogPreview);
+
+    void deleteById(Integer blogId);
 }

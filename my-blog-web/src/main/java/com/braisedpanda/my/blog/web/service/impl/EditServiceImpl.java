@@ -33,6 +33,22 @@ public class EditServiceImpl implements EditService{
         Editor editor = editMapper.selectOneByExample(example);
         return editor;
     }
-
-
+    /** 
+    * @Description: 更新
+    * @Param: [editor]
+    * @Date: 2019/12/27 0027 
+    */ 
+    @Override
+    public void updateEditor(Editor editor) {
+        editMapper.updateByPrimaryKeySelective(editor);
+    }
+    /** 
+    * @Description: 根据Id删除博客
+    * @Param: [id]
+    * @Date: 2019/12/27 0027 
+    */ 
+    @Override
+    public void deleteById(Integer id) {
+        editMapper.deleteByPrimaryKey(id);
+    }
 }
