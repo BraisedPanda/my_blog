@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8"/>
-    <title>Editor.md examples</title>
+    <title>博客内容</title>
 
     <link rel="stylesheet" href="/css/font-awesome.css">
     <link rel="stylesheet" href="/css/bootstrap.css">
@@ -18,8 +18,8 @@
 <nav class="navbar navbar-default navbar-fixed-top nav-top ">
     <div class="container nav-top-container">
         <ul class="nav-top-ul">
-            <a href="#" class="nav-top-a"><li class="nav-top-li active">首页</li></a>
-            <a href="#" class="nav-top-a"><li class="nav-top-li">首页2</li></a>
+            <a href="/index" class="nav-top-a"><li class="nav-top-li active">首页</li></a>
+            <a href="/blog/allblog/1" class="nav-top-a"><li class="nav-top-li ">博客</li></a>
             <a href="#" class="nav-top-a"><li class="nav-top-li">首页3</li></a>
             <a href="#" class="nav-top-a"><li class="nav-top-li">首页4</li></a>
             <a href="#" class="nav-top-a"><li class="nav-top-li">首页5</li></a>
@@ -67,10 +67,10 @@
 <input type="hidden" th:value="${editor.id}" id="editorId">
 <input type="hidden" th:value="${editor.blogId}" id="bolgId">
 <!-------右上角博客编辑模块------->
-<section class="edit-nav">
+<section class="edit-nav" shiro:hasRole="admin">
     <ul class="edit-nav-ul" style="margin-right: 30px">
-        <a href="/blog/newBlog"><li class="edit-nav-li"><i class="fa fa-plus fa-lg" aria-hidden="true"></i></li></a>
-        <a th:href="@{/blog/edit/{id}(id = ${id})}"><li class="edit-nav-li" onclick="gohistory();"><i class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i></li></a>
+        <a href="/admin/blog/newBlog"><li class="edit-nav-li"><i class="fa fa-plus fa-lg" aria-hidden="true"></i></li></a>
+        <a th:href="@{/admin/blog/edit/{id}(id = ${id})}"><li class="edit-nav-li" ><i class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i></li></a>
         <a data-toggle="modal" data-target="#deleteBlogModel"><li class="edit-nav-li"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i></li></a>
     </ul>
 </section>
@@ -111,7 +111,7 @@
         var blogId = $("#bolgId").val();
         $.ajax({
             type: 'delete',
-            url: '/blog/delete/'+id ,
+            url: '/admin/blog/delete/'+id ,
             data:{
                 blogId: blogId
             },

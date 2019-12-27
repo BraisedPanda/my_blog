@@ -2,7 +2,7 @@
 <html lang="zh" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8" />
-    <title>Simple example - Editor.md examples</title>
+    <title>新建博客</title>
     <link rel="stylesheet" href="/css/style.css" />
     <link rel="stylesheet" href="/css/editormd.css" />
     <link rel="stylesheet" href="/css/font-awesome.css">
@@ -16,8 +16,8 @@
 <nav class="navbar navbar-default navbar-fixed-top nav-top ">
     <div class="container nav-top-container">
         <ul class="nav-top-ul">
-            <a href="#" class="nav-top-a"><li class="nav-top-li ">首页</li></a>
-            <a href="#" class="nav-top-a"><li class="nav-top-li">首页2</li></a>
+            <a href="/index" class="nav-top-a"><li class="nav-top-li ">首页</li></a>
+            <a href="/blog/allblog/1" class="nav-top-a"><li class="nav-top-li ">博客</li></a>
             <a href="#" class="nav-top-a"><li class="nav-top-li">首页3</li></a>
             <a href="#" class="nav-top-a"><li class="nav-top-li active">写博客</li></a>
             <a href="#" class="nav-top-a"><li class="nav-top-li">首页5</li></a>
@@ -101,7 +101,7 @@
             width: "90%",
             height: 640,
             syncScrolling: "single",
-            path: "../lib/",
+            path: "/lib/",
             imageUpload: true,
             emoji: true,
             imageFormats: ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
@@ -116,7 +116,7 @@
 
         console.log($("#textContent").text());
         $.ajax({
-            url:  "/blog/insert",
+            url:  "/admin/blog/insert",
             type: "post",
             async: true,
             data: {

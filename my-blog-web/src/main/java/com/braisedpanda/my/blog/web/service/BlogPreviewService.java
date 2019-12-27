@@ -16,4 +16,6 @@ public interface BlogPreviewService {
     void updateBlogPreview(BlogPreview blogPreview);
 
     void deleteById(Integer blogId);
+
+    List<BlogPreview> getAllBlogPreview(int page);
 }

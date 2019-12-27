@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>红烧大熊猫的小屋</title>
@@ -20,7 +20,7 @@
                 <li class="nav-left-icon-li"><a href="javascript:void(0)" ><i class="fa fa-home fa-lg nav-left-inco" data-src="/index"></i></a></li>
                 <li class="nav-left-icon-li"><a href="javascript:void(0)" ><i class="fa fa-book fa-lg nav-left-inco" ></i></a></li>
                 <li class="nav-left-icon-li"><a href="javascript:void(0)" ><i class="fa fa-tags fa-lg nav-left-inco" ></i></a></li>
-                <li class="nav-left-icon-li"><a href="javascript:void(0)" ><i class="fa fa-pencil fa-lg nav-left-inco" data-src="/blog/newBlog"></i></a></li>
+                <li class="nav-left-icon-li" shiro:hasRole="admin"><a href="javascript:void(0)" ><i class="fa fa-pencil fa-lg nav-left-inco" data-src="/admin/blog/newBlog"></i></a></li>
                 <li class="nav-left-icon-li"><a href="javascript:void(0)" ><i class="fa fa-star fa-lg nav-left-inco"></i></a></li>
                 <li class="nav-left-icon-li"><a href="javascript:void(0)" ><i class="fa fa-refresh fa-lg nav-left-inco" ></i></a></li>
             </ul>

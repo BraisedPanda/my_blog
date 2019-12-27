@@ -90,4 +90,16 @@ public class BlogPreviewServiceImpl implements BlogPreviewService{
     public void deleteById(Integer blogId) {
         blogPreviewMapper.deleteByPrimaryKey(blogId);
     }
+    /** 
+    * @Description: 分页查询所有的博客
+    * @Param: [page]
+    * @Date: 2019/12/27 0027 
+    */ 
+    @Override
+    public List<BlogPreview> getAllBlogPreview(int page) {
+        PageHelper.startPage(page,10);
+        List<BlogPreview> list = blogPreviewMapper.selectAll();
+        PageInfo pageInfo = new PageInfo(list);
+        return pageInfo.getList();
+    }
 }

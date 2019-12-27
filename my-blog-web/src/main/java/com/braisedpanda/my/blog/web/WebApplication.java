@@ -14,6 +14,7 @@ import tk.mybatis.spring.annotation.MapperScan;
 @MapperScan(basePackages = "com.braisedpanda.my.blog.web.mapper")
 @SpringBootApplication
 @EnableSwagger2
+
 public class WebApplication {
     public static void main(String[] args) {
         SpringApplication.run(WebApplication.class,args);

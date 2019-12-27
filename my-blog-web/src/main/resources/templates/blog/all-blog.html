@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>全部博客</title>
+    <!--<link rel="icon" href="/img/core-img/favicon.ico">-->
+    <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/font-awesome.css">
+    <link rel="stylesheet" href="/tips/jquery.mytooltip.css">
+    <link rel="stylesheet" href="/tips/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/nav.css">
+    <link rel="stylesheet" type="text/css" href="/css/scrollbar.css">
+    <link rel="stylesheet" type="text/css" href="/css/pic-hover/style.css">
+
+</head>
+
+<body >
+
+<!--上方导航条-->
+<nav class="navbar navbar-default navbar-fixed-top nav-top ">
+    <div class="container nav-top-container">
+        <ul class="nav-top-ul">
+            <a href="/index" class="nav-top-a"><li class="nav-top-li ">首页</li></a>
+            <a href="/blog/allblog/1" class="nav-top-a"><li class="nav-top-li active">博客</li></a>
+            <a href="#" class="nav-top-a"><li class="nav-top-li">首页3</li></a>
+            <a href="#" class="nav-top-a"><li class="nav-top-li">首页4</li></a>
+            <a href="#" class="nav-top-a"><li class="nav-top-li">首页5</li></a>
+
+        </ul>
+
+    </div>
+</nav>
+
+<!--全部博客-->
+<section class="latest-blog">
+    <div class="container latest-blog-container">
+        <div class="latest-blog-top">
+            <div class="latest-blog-top-left">
+                <div class="latest-blog-top-left-title"><i class="fa fa-book">&nbsp;全部博客</i></div>
+            </div>
+        </div>
+
+        <div class="latest-blog-body" th:each="list:${topPreviewList}">
+
+            <div class="latest-blog-body-image">
+                <a th:href="@{/blog/view/{id}(id=${list.id})}">
+
+                    <div class="movie">
+                        <div class="movie__card">
+                            <img th:src="${list.imageurl}" class="show-img" alt="img02">
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="latest-blog-body-right">
+                <a th:href="@{/blog/view/{id}(id=${list.id})}">
+                    <div class="latest-blog-body-title">
+                        [[${list.title}]]
+                    </div>
+                </a>
+                <a th:href="@{/blog/view/{id}(id=${list.id})}">
+                    <div class="latest-blog-body-describe" style="text-align: left">
+                        &nbsp;&nbsp; [[${list.description}]]
+                    </div>
+                </a>
+                <div class="latest-blog-body-bottom">
+                    <ul class="latest-blog-body-ul">
+                        <div class="latest-blog-body-bottom-font"><li class="latest-blog-body-li fa fa-th" >&nbsp;[[${list.category }]]</li></div>
+                        <div class="latest-blog-body-bottom-font"> <li class="latest-blog-body-li fa fa-eye">&nbsp;[[${list.views}]]</li></div>
+                        <div class="latest-blog-body-bottom-font"> <li class="latest-blog-body-li fa fa-calendar">&nbsp;[[${list.createTime}]]</li></div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!--右下角固定导航栏-->
+<section class="fix-nav">
+    <ul class="fix-nav-ul">
+        <li class="fix-nav-li" onclick="gotop();"><i class="fa fa-arrow-up fa-lg" aria-hidden="true"></i></li>
+        <li class="fix-nav-li" onclick="gohistory();"><i class="fa fa-history fa-lg" aria-hidden="true"></i></li>
+        <a href="/index"><li class="fix-nav-li"><i class="fa fa-home fa-lg" aria-hidden="true"></i></li></a>
+    </ul>
+</section>
+<!--页脚部分-->
+<footer class="footer" style="background-image: url('/images/footer.png'); background-size: 80%;">
+    <div class="text1">Copyright &copy;2019 BraisedPanda</div>
+    <div class="text2">Design By BraisedPanda and reference to innei.ren</div>
+</footer>
+
+
+
+<script src="/js/jquery-3.4.1.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/tips/jquery.mytooltip.js"></script>
+<script src="/tips/script.js"></script>
+<script src="/js/modernizr.custom.js"></script>
+<script src="/js/loading.js"></script>
+<script src="/js/pic-hover/jquery.hover3d.js"></script>
+<script src="/js/text/text.js"></script>
+<script type="text/javascript" charset="utf-8"  src="/js/Live2D/L2Dwidget.min.js"></script>
+<script>
+    $(function () {
+
+        /**加载看板娘**/
+        L2Dwidget.init({ "model": { jsonPath:
+            "https://unpkg.com/live2d-widget-model-koharu@1.0.5/assets/koharu.model.json  ",
+            "scale": 1 }, "display": { "position": "left", "width": 150, "height": 300,
+            "hOffset": -20, "vOffset": -30 }, "mobile": { "show": true, "scale": 0.5 },
+            "react": { "opacityDefault": 0.7, "opacityOnHover": 0.2 } });
+        $(".movie").hover3d({
+            selector: ".movie__card",
+            shine: true,
+
+            sensitivity: 20
+        });
+
+
+    });
+</script>
+
+</body>
+</html>
