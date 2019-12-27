@@ -96,8 +96,6 @@ public class EditController {
     @ApiOperation("删除博客")
     @DeleteMapping("/delete/{id}")
     public ResponseStatus deleteBlog(@PathVariable(value="id") Integer id, Integer blogId){
-        System.out.println(id);
-        System.out.println(blogId);
         editService.deleteById(id);
         blogpreviewService.deleteById(blogId);
         return  ResponseStatus.success("插入markdown成功");

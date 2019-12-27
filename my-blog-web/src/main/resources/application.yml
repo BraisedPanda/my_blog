@@ -13,11 +13,10 @@ spring:
     encoding:
       enabled: true
       charset: UTF-8
+
+
   messages:
     encoding: UTF-8
-
-
-
   datasource:
       type: com.alibaba.druid.pool.DruidDataSource
       druid:

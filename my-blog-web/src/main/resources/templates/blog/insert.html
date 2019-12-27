@@ -26,6 +26,24 @@
 
     </div>
 </nav>
+<!------删除成功提示-------->
+<div class="modal fade" tabindex="-1" role="dialog" id="createSuccessModel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">提示</h4>
+            </div>
+            <div class="modal-body">
+                <p>创建博客成功</p>
+            </div>
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-success" onclick="confirmCreate()">确定</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!------模态框结束-------->
 <div class="head" >
     <div style="width: 90%;margin-left: 5%">
         <div class="form-group" >
@@ -87,15 +105,15 @@
             imageUpload: true,
             emoji: true,
             imageFormats: ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
-            imageUploadURL: "/file",
+            imageUploadURL: "/images/upload/",
             //这个配置在simple.html中并没有，但是为了能够提交表单，使用这个配置可以让构造出来的HTML代码直接在第二个隐藏的textarea域中，方便post提交表单。
             saveHTMLToTextarea: true
-            // previewTheme : "dark"
+//            previewTheme : "dark"
         });
 
     });
     function saveHtml() {
-        // console.log($("#text").text());
+
         console.log($("#textContent").text());
         $.ajax({
             url:  "/blog/insert",
@@ -111,12 +129,16 @@
             },
             dataType: "json",
             success: function (result) {
-                alert("博客创建成功");
+                $('#createSuccessModel').modal('show');
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
                 alert("博客创建失败");
             }
         });
+    }
+    confirmCreate = function () {
+        $('#createSuccessModel').modal('hide');
+        window.location.href = "/index";
     }
 </script>
 </body>

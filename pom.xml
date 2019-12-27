@@ -47,7 +47,12 @@
         <artifactId>pagehelper-spring-boot-starter</artifactId>
         <version>1.2.10</version>
     </dependency>
-
+        <!--七牛云SDK-->
+    <dependency>
+        <groupId>com.qiniu</groupId>
+        <artifactId>qiniu-java-sdk</artifactId>
+        <version>7.1.1</version>
+    </dependency>
     <!--swagger2-->
     <dependency>
         <groupId>io.springfox</groupId>
