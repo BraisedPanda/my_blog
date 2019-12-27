@@ -34,12 +34,14 @@ public class BlogPreviewServiceImpl implements BlogPreviewService{
     */
     @Override
     public List<BlogPreview> getTopBlogPreview() {
+        PageHelper.startPage(1,3);
         Example example = new Example(BlogPreview.class);
         Example.Criteria criteria = example.createCriteria();
         criteria.andEqualTo("top",1);
         example.setOrderByClause("create_time desc");
         List<BlogPreview> list = blogPreviewMapper.selectByExample(example);
-        return list;
+        PageInfo pageInfo = new PageInfo(list);
+        return pageInfo.getList();
     }
 
 

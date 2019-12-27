@@ -5,7 +5,7 @@ import com.braisedpanda.my.blog.commons.model.po.Editor;
 public interface EditService {
     void insert(Editor editor);
 
-    Editor findEditById(int id);
+    Editor findEditByBlogId(int id);
 
     void updateEditor(Editor editor);
 

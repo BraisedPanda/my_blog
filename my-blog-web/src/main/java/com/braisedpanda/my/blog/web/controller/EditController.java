@@ -50,7 +50,13 @@ public class EditController {
     @GetMapping("/view/{id}")
     public ModelAndView preview(@PathVariable(value = "id") int id) {
         ModelAndView modelAndView = new ModelAndView();
-        Editor editor = editService.findEditById(id);
+        //view数加1
+        BlogPreview blogPreview = blogpreviewService.getBlogPreviewById(id);
+        int views = blogPreview.getViews()+1;
+        blogPreview.setViews(views);
+        blogpreviewService.updateBlogPreview(blogPreview);
+        //显示博客内容
+        Editor editor = editService.findEditByBlogId(id);
         modelAndView.addObject("id",id);
         modelAndView.addObject("editor",editor);
         modelAndView.setViewName("blog/preview");
@@ -67,7 +73,7 @@ public class EditController {
     @GetMapping("/edit/{id}")
     public ModelAndView toeditEditor(@PathVariable(value="id") int id){
         ModelAndView modelAndView = new ModelAndView();
-        Editor editor = editService.findEditById(id);
+        Editor editor = editService.findEditByBlogId(id);
         BlogPreview blogPreview = blogpreviewService.getBlogPreviewById(id);
         modelAndView.addObject("editor",editor);
         modelAndView.addObject("blogPreview",blogPreview);
@@ -82,8 +88,6 @@ public class EditController {
         blogPreview.setId(blogId);
         editor.setBlogId(blogId);
         editor.setId(editorId);
-        System.out.println(editor);
-        System.out.println(blogPreview);
 
         blogpreviewService.updateBlogPreview(blogPreview);
         /*保存markdown*/

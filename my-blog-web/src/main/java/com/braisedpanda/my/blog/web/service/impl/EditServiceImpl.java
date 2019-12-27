@@ -26,7 +26,7 @@ public class EditServiceImpl implements EditService{
     * @Description: 根据blog_id查找博客
     */
     @Override
-    public Editor findEditById(int id) {
+    public Editor findEditByBlogId(int id) {
         Example example = new Example(Editor.class);
         Example.Criteria criteria = example.createCriteria();
         criteria.andEqualTo("blogId",id);
