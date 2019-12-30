@@ -57,7 +57,7 @@ public class EditController {
         List<BlogPreview> topBlogPreview = blogpreviewService.getAllBlogPreview(page);
         modelAndView.addObject("topPreviewList",topBlogPreview);
 
-        modelAndView.setViewName("/blog/all-blog");
+        modelAndView.setViewName("blog/all-blog");
         return modelAndView;
     }
 

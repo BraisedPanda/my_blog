@@ -8,6 +8,7 @@ import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -43,41 +44,42 @@ public class UserController {
             subject.login(token);
         } catch (UnknownAccountException uae) {
             modelAndView.addObject("tips","*未知账户~");
-            modelAndView.setViewName("/login");
+            modelAndView.setViewName("login");
             return modelAndView;
         } catch (IncorrectCredentialsException ice) {
             modelAndView.addObject("tips","*密码不正确~");
-            modelAndView.setViewName("/login");
+            modelAndView.setViewName("login");
             return modelAndView;
         } catch (LockedAccountException lae) {
             modelAndView.addObject("tips","*账户已锁定~");
-            modelAndView.setViewName("/login");
+            modelAndView.setViewName("login");
             return modelAndView;
         } catch (ExcessiveAttemptsException eae) {
             modelAndView.addObject("tips","*用户名或密码错误次数过多~");
-            modelAndView.setViewName("/login");
+            modelAndView.setViewName("login");
             return modelAndView;
         } catch (AuthenticationException ae) {
             modelAndView.addObject("tips","*用户名或密码不正确~");
-            modelAndView.setViewName("/login");
+            modelAndView.setViewName("login");
             return modelAndView;
         }
         if (subject.isAuthenticated()) {
+            subject.getSession().setTimeout(30*60*24*1000);
             User user = userService.getUser(username,password);
             session.setAttribute("user",user);
-            modelAndView.setViewName("/index");
+            modelAndView.setViewName("index");
             return modelAndView;
         } else {
             token.clear();
             modelAndView.addObject("tips","*未知账户~");
-            modelAndView.setViewName("/login");
+            modelAndView.setViewName("login");
             return modelAndView;
         }
     }
     @ApiOperation("跳转到登录界面")
-    @PostMapping("/tologin")
+    @GetMapping("/tologin")
     public ModelAndView tologin(){
-        return new ModelAndView("/login");
+        return new ModelAndView("login");
     }
 
     //退出登录
@@ -86,7 +88,7 @@ public class UserController {
     public ModelAndView quite(){
         Subject currentUser = SecurityUtils.getSubject();
         currentUser.logout();
-        return new ModelAndView("/index");
+        return new ModelAndView("index");
     }
 
 }

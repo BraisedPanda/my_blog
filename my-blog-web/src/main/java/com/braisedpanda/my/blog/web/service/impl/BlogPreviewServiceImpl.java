@@ -98,7 +98,9 @@ public class BlogPreviewServiceImpl implements BlogPreviewService{
     @Override
     public List<BlogPreview> getAllBlogPreview(int page) {
         PageHelper.startPage(page,10);
-        List<BlogPreview> list = blogPreviewMapper.selectAll();
+        Example example = new Example(BlogPreview.class);
+        example.setOrderByClause("create_time desc");
+        List<BlogPreview> list = blogPreviewMapper.selectByExample(example);
         PageInfo pageInfo = new PageInfo(list);
         return pageInfo.getList();
     }

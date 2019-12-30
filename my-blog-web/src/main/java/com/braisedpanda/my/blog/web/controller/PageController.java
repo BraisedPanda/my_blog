@@ -40,6 +40,7 @@ public class PageController {
         modelAndView.setViewName("main");
         return modelAndView;
     }
+
     @ResponseBody
     @RequestMapping("/admin/view")
     public String test(){

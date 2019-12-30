@@ -46,7 +46,7 @@ public class AdminController {
     @ApiOperation("新建博客")
     @GetMapping("/blog/newBlog")
     public ModelAndView newBlog(){
-        return new ModelAndView("/blog/insert");
+        return new ModelAndView("blog/insert");
     }
 
     @ApiOperation("编辑博客(回显)")
