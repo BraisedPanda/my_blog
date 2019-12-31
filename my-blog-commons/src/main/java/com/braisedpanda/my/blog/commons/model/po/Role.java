@@ -5,6 +5,7 @@ import lombok.Data;
 import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.io.Serializable;
 
 /**
  * @program: my-blog
@@ -14,7 +15,8 @@ import javax.persistence.Table;
  **/
 @Table(name="role")
 @Data
-public class Role {
+public class Role implements Serializable{
+    private static final long serialVersionUID = 5752995266309114913L;
     @Id
     @Column(name = "id")
     private Integer id;

@@ -6,6 +6,7 @@ import lombok.Data;
 
 import javax.persistence.Column;
 import javax.persistence.Id;
+import java.io.Serializable;
 
 /**
  * @program: my-blog
@@ -15,7 +16,9 @@ import javax.persistence.Id;
  **/
 @Data
 @ApiModel(value = "博客预览")
-public class BlogPreview {
+public class BlogPreview implements Serializable{
+
+    private static final long serialVersionUID = 5968495637537618821L;
     @Id
     @Column(name="id")
     @ApiModelProperty(value="id", example = "1")

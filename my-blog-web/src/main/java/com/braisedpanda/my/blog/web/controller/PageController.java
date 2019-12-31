@@ -1,7 +1,10 @@
 package com.braisedpanda.my.blog.web.controller;
 
 import com.braisedpanda.my.blog.commons.model.po.BlogPreview;
+import com.braisedpanda.my.blog.commons.model.po.DiaryDto;
+import com.braisedpanda.my.blog.web.biz.DiaryBiz;
 import com.braisedpanda.my.blog.web.service.BlogPreviewService;
+import com.braisedpanda.my.blog.web.service.DiaryService;
 import com.braisedpanda.my.blog.web.service.EditService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -25,7 +28,7 @@ public class PageController {
     @Autowired
     private BlogPreviewService blogPreviewService;
     @Autowired
-    private EditService editService;
+    private DiaryBiz diaryBiz;
 
     @ApiOperation("首页渲染，查找3篇置顶的博客，和3篇最新的博客")
     @RequestMapping("/index")
@@ -33,10 +36,12 @@ public class PageController {
         ModelAndView modelAndView = new ModelAndView();
         //3篇置顶的博客
         List<BlogPreview> topBlogPreview = blogPreviewService.getTopBlogPreview();
-        modelAndView.addObject("topPreviewList",topBlogPreview);
+//        modelAndView.addObject("topPreviewList",topBlogPreview);
         //3篇最新的博客
         List<BlogPreview> leatestBlogPreview = blogPreviewService.getleatestBlogPreview();
-        modelAndView.addObject("leatestPreviewList",leatestBlogPreview);
+//        modelAndView.addObject("leatestPreviewList",leatestBlogPreview);
+        List<DiaryDto> diaryDtoList = diaryBiz.pageDiaryDtoList();
+        modelAndView.addObject("diaryDtoList",diaryDtoList);
         modelAndView.setViewName("main");
         return modelAndView;
     }

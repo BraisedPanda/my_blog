@@ -154,6 +154,36 @@
         </div>
     </div>
 </section>
+
+<!--随笔-->
+<section class="all-diary">
+    <div class="container latest-blog-container">
+        <div class="all-diary-top">
+            <div class="all-diary-top-left">
+                <div class="all-diary-top-left-title"><i class="fa fa-pencil">&nbsp;随笔</i></div>
+            </div>
+            <a href="/diary/allDiary">
+                <div class="all-diary-top-right">
+                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                </div>
+            </a>
+        </div>
+        <div class="row diary-row">
+            <div class="diary col-md-5" th:each="diaryDto:${diaryDtoList}">
+                <div class="diary-content">
+                    [[${diaryDto.content}]]
+                </div>
+                <div class = "diary-bottom">
+                    <div class="diary-date">[[${diaryDto.createTime}]]</div>
+                    <a th:href="@{/diary/view/{id}(id=${diaryDto.id})}"><div class="readmore"><i class="fa fa-bookmark" aria-hidden="true"></i>&nbsp;Read More</div></a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</section>
+
 <!--右下角固定导航栏-->
 <section class="fix-nav">
     <ul class="fix-nav-ul">

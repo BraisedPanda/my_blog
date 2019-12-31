@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>全部博客</title>
+    <link rel="icon" th:href="@{/images/favicon.ico}" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/alldiary.css">
+    <link rel="stylesheet" href="/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="/css/nav.css">
+    <link rel="stylesheet" type="text/css" href="/css/scrollbar.css">
+
+
+</head>
+
+<body style="background-image: url('/images/background.png')">
+
+<!--上方导航条-->
+<nav class="navbar navbar-default navbar-fixed-top nav-top ">
+    <div class="container nav-top-container">
+        <ul class="nav-top-ul">
+            <a href="/index" class="nav-top-a"><li class="nav-top-li ">首页</li></a>
+            <a href="/blog/allblog/1" class="nav-top-a"><li class="nav-top-li ">博客</li></a>
+            <a href="#" class="nav-top-a"><li class="nav-top-li active">随笔</li></a>
+            <a href="#" class="nav-top-a"><li class="nav-top-li">首页4</li></a>
+            <a href="#" class="nav-top-a"><li class="nav-top-li">首页5</li></a>
+
+        </ul>
+
+    </div>
+</nav>
+
+<!--全部博客-->
+<section class="all-diary">
+    <div class="all-diary-body" th:each="diary:${diaryList}">
+        <div class="all-diary-top">
+            <div class="all-diary-time">[[${diary.createTime}]]</div>
+            <div class="all-diary-title">[[${diary.title}]]</div>
+        </div>
+        <div class="all-diary-content" th:utext="${diary.content}">
+
+        </div>
+        <div class="all-diary-bottom">
+            <ul class ="all-diary-ul">
+                <li class="all-diary-li"><i class="fa fa-arrow-up fa-lg" aria-hidden="true"></i></li>
+                <li class="all-diary-li"><i class="fa fa-arrow-up fa-lg" aria-hidden="true"></i></li>
+                <li class="all-diary-li"><i class="fa fa-arrow-up fa-lg" aria-hidden="true"></i></li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!--右下角固定导航栏-->
+<section class="fix-nav">
+    <ul class="fix-nav-ul">
+        <li class="fix-nav-li" onclick="gotop();"><i class="fa fa-arrow-up fa-lg" aria-hidden="true"></i></li>
+        <li class="fix-nav-li" onclick="gohistory();"><i class="fa fa-history fa-lg" aria-hidden="true"></i></li>
+        <a href="/index"><li class="fix-nav-li"><i class="fa fa-home fa-lg" aria-hidden="true"></i></li></a>
+    </ul>
+</section>
+<!--页脚部分-->
+<footer class="footer" style="background-image: url('/images/footer.png'); background-size: 80%;">
+    <div class="text1">Copyright &copy;2019 BraisedPanda</div>
+    <div class="text2">Design By BraisedPanda and reference to innei.ren</div>
+</footer>
+
+
+
+<script src="/js/jquery-3.4.1.js"></script>
+<script src="/js/bootstrap.js"></script>
+
+
+<script src="/js/loading.js"></script>
+
+
+<script type="text/javascript" charset="utf-8"  src="/js/Live2D/L2Dwidget.min.js"></script>
+<script>
+    $(function () {
+
+        /**加载看板娘**/
+        L2Dwidget.init({ "model": { jsonPath:
+            "https://unpkg.com/live2d-widget-model-koharu@1.0.5/assets/koharu.model.json  ",
+            "scale": 1 }, "display": { "position": "left", "width": 150, "height": 300,
+            "hOffset": -20, "vOffset": -30 }, "mobile": { "show": true, "scale": 0.5 },
+            "react": { "opacityDefault": 0.7, "opacityOnHover": 0.2 } });
+        $(".movie").hover3d({
+            selector: ".movie__card",
+            shine: true,
+
+            sensitivity: 20
+        });
+
+
+    });
+</script>
+
+</body>
+</html>

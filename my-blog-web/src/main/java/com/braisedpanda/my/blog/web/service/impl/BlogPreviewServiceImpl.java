@@ -53,7 +53,7 @@ public class BlogPreviewServiceImpl implements BlogPreviewService{
     @Override
 
     public List<BlogPreview> getleatestBlogPreview() {
-        PageHelper.startPage(1,7);
+        PageHelper.startPage(1,3);
         Example example = new Example(BlogPreview.class);
         example.setOrderByClause("create_time desc");
         List<BlogPreview> list = blogPreviewMapper.selectByExample(example);

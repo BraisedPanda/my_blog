@@ -196,6 +196,98 @@ body{
     line-height: 50px;
 }
 /***全部博客结束***/
+
+/***随笔模块开始***/
+.all-diary{
+    margin-top: 30px;
+    width: 95%;
+    float: left;
+    height: auto;
+    position: relative;
+
+}
+.all-diary-top{
+    width: 95%;
+    height:50px;
+    float: left;
+}
+.all-diary-top-left{
+    border-radius: 15px;
+    background-color: rgb(29, 158, 116);
+    width: 180px;
+    float: left;
+    text-align: center;
+    line-height: 50px;
+}
+.all-diary-top-left-title{
+    font-size: 25px;
+    color: white;
+}
+.all-diary-top-right{
+    color: white;
+    border-radius: 15px;
+    background-color: rgb(29, 158, 116);
+    width: 50px;
+    float: right;
+    text-align: center;
+    line-height: 50px;
+}
+.diary-row{
+    float: left;
+    width: 95%;
+    text-align: center;
+    margin-top:20px;
+    padding-left: 2%;
+
+}
+.diary{
+    float: left;
+    background: rgb(255, 153, 135);
+    position: relative;
+
+    margin-top:15px;
+    margin-left: 20px;
+    height:115px;
+    color:white;
+    border-radius: 15px;
+
+}
+.diary-content{
+    margin-top:15px;
+    text-align: left;
+    height:60px;
+
+}
+.diary-bottom{
+    width: 400px;
+    float: left;
+
+}
+.diary-date{
+    float: left;
+}
+.readmore{
+
+    font-size: 18px;
+    margin-left: 100px;
+    float: right;
+    transition: 0.3s;
+    width: 125px;
+    border-radius: 10px;
+}
+.readmore:hover{
+    background: white;
+
+}
+.diary-bottom a{
+    text-decoration: none;
+    color: white;
+}
+.diary-bottom a:hover{
+    color: rgb(255, 153, 135);
+}
+
+/***随笔模块结束***/
 .show-img{
     width: 500px;
     height:300px;

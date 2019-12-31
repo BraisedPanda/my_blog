@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.io.Serializable;
 
 
 /**
@@ -17,8 +18,9 @@ import javax.persistence.Table;
  **/
 @Data
 @Table(name = "editor")
-public class Editor {
+public class Editor implements Serializable{
 
+    private static final long serialVersionUID = -5782373197452169140L;
     @Id
     @Column(name = "id")
     private Integer id;
