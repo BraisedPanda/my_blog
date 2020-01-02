@@ -1,6 +1,7 @@
 package com.braisedpanda.my.blog.web.biz;
 
 import com.braisedpanda.my.blog.commons.model.po.DiaryDto;
+import com.braisedpanda.my.blog.commons.utils.FontUtils;
 import com.braisedpanda.my.blog.web.service.DiaryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,10 +25,11 @@ public class DiaryBiz {
         for (DiaryDto diaryDto:
              diaryDtoList) {
             String content  =diaryDto.getContent();
-            if(content.length()<=45){
-                content = content + "......";
+            content = FontUtils.HTMLChange(content);
+            if(content.length()<=50){
+                content = content + "...";
             }else{
-                content = content.substring(0,45)+"...";
+                content = content.substring(0,50)+"...";
             }
 
             diaryDto.setContent(content);

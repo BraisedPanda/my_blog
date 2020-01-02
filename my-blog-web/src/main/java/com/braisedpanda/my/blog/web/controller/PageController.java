@@ -30,16 +30,16 @@ public class PageController {
     @Autowired
     private DiaryBiz diaryBiz;
 
-    @ApiOperation("首页渲染，查找3篇置顶的博客，和3篇最新的博客")
+    @ApiOperation("首页渲染，查找3篇置顶的博客，和3篇最新的博客，6篇随笔")
     @RequestMapping("/index")
     public ModelAndView index(){
         ModelAndView modelAndView = new ModelAndView();
         //3篇置顶的博客
         List<BlogPreview> topBlogPreview = blogPreviewService.getTopBlogPreview();
-//        modelAndView.addObject("topPreviewList",topBlogPreview);
+        modelAndView.addObject("topPreviewList",topBlogPreview);
         //3篇最新的博客
         List<BlogPreview> leatestBlogPreview = blogPreviewService.getleatestBlogPreview();
-//        modelAndView.addObject("leatestPreviewList",leatestBlogPreview);
+        modelAndView.addObject("leatestPreviewList",leatestBlogPreview);
         List<DiaryDto> diaryDtoList = diaryBiz.pageDiaryDtoList();
         modelAndView.addObject("diaryDtoList",diaryDtoList);
         modelAndView.setViewName("main");

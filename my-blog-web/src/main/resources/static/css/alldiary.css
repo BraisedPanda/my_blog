@@ -2,13 +2,12 @@
     background: none;
     width:60%;
     /*background: salmon;*/
-    height: 1000px;
     margin:0 auto;
     text-align: center;
 
 }
 .all-diary-body{
-    margin-top: 30px;
+    margin-top: 50px;
     float: left;
     width: 100%;
     position: relative;
@@ -21,17 +20,100 @@
     width: 100%;
     position: relative;
 }
-.all-diary-time{
-    font-family: "Arial Rounded MT Bold";
-    font-size: 15px;
+.all-diary-decoration{
     float: left;
-    width: 180px;
-    /*background-color: #9fcdff;*/
+    height: 30px;
+    width: 3px;
+    line-height: 30px;
+    background-color: rgb(255, 193, 7);
+}
+.all-diary-time{
+    font-family: "Microsoft JhengHei Light";
+    font-size: 16px;
+    margin-left:5px;
+    float: left;
+    height: 30px;
+    width: auto;
+    line-height: 30px;
+
+}
+.all-diary-a{
+
 }
 .all-diary-title{
     font-family: 幼圆;
-    font-size: 15px;
+    font-size: 23px;
     margin: 0 auto;
-    width: 180px;
-    /*background-color: #9fcdff;*/
+    line-height: 30px;
+    width: auto;
+
+    height: 30px;
+}
+.all-diary-content{
+    font-family: 幼圆;
+    text-align: left;
+}
+.all-diary-bottom{
+    margin-top:20px;
+    width: 1000px;
+    height: 35px;
+}
+.all-diary-ul{
+    width: 500px;
+
+    height:22px;
+    list-style-type: none;
+
+}
+.all-diary-li-f{
+
+    float: left;
+    width:auto;
+    margin-left: -36px;
+    font-size: 14px;
+}
+.all-diary-li{
+
+    float: left;
+    width:auto;
+    margin-left: 15px;
+    font-size: 14px;
+}
+.fa-user{
+
+    color:rgb(136, 136, 136);
+}
+.fa-moon-o{
+
+    color:rgb(91, 174, 35);
+}
+.fa-heart{
+
+    color:rgb(239, 130, 160);
+}
+
+.edit-nav{
+    float: right;
+    position: relative;
+    margin-right: 12%;
+    width: 30px;
+    height: 200px;
+
+}
+.edit-nav-ul{
+    text-align: center;
+    list-style-type: none;
+    width: 20px;
+
+}
+.edit-nav-li{
+    color:rgb(121, 85, 72);
+    line-height: 20px;
+    width:20px;
+    height: 20px;
+    margin-top: 20px;
+
+}
+.edit-nav-li:hover{
+    cursor: pointer;
 }

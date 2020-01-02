@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -30,30 +31,9 @@ public class DiaryController {
     private DiaryService diaryService;
 
 
-    @GetMapping("/newDiary")
-    @ApiOperation("跳转到创建随笔")
-    public ModelAndView toInsert(){
-        return new ModelAndView("diary/insert");
-    }
 
-    @PostMapping("/insert")
-    @ApiOperation("创建随笔")
-    public ModelAndView inertDiary(Diary diary, HttpSession session){
-        ModelAndView modelAndView = new ModelAndView();
-        String createTime = DateUtils.currentStandardDate2();
-        diary.setCreateTime(createTime);
-        User user = (User)session.getAttribute("user");
-        if(user != null){
-            String  username = user.getUsername();
-        }
-        String username = "测试";
-        diary.setUsername(username);
-        diaryService.insert(diary);
-        ResponseStatus.success("创建随笔成功");
-        modelAndView.addObject("message","创建成功");
-        modelAndView.setViewName("message");
-        return modelAndView;
-    }
+
+
 
     @GetMapping("/allDiary")
     @ApiOperation("跳转到所有随笔")
@@ -63,12 +43,29 @@ public class DiaryController {
         for (Diary diary :
                 diaryList) {
             String content = diary.getContent();
-            content = FontUtils.DBChange(content);
+            content = FontUtils.HTMLChange(content);
             diary.setContent(content);
         }
         modelAndView.addObject("diaryList",diaryList);
         modelAndView.setViewName("diary/all-diary");
         return modelAndView;
     }
+
+    @GetMapping("/view/{id}")
+    @ApiOperation("查看某一个随笔详情")
+    public ModelAndView viewDiary(@PathVariable("id") Integer id){
+        ModelAndView modelAndView = new ModelAndView();
+        List<Diary> diaryList = new ArrayList<>();
+        Diary diary = diaryService.selectByPrimaryKey(id);
+        String content = diary.getContent();
+        content = FontUtils.HTMLChange(content);
+        diary.setContent(content);
+        diaryList.add(diary);
+        modelAndView.addObject("diaryList",diaryList);
+        modelAndView.setViewName("diary/detail");
+        return modelAndView;
+    }
+
+
 
 }

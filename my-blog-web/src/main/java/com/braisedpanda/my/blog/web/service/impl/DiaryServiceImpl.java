@@ -9,6 +9,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import tk.mybatis.mapper.entity.Example;
 
 import java.util.List;
 
@@ -30,7 +31,7 @@ public class DiaryServiceImpl implements DiaryService {
 
     @Override
     public List<DiaryDto> pageDiaryDto() {
-        PageHelper.startPage(1,10);
+        PageHelper.startPage(1,6);
         List<DiaryDto> diaryDtoList = diaryMapper.selectAllDiaryDto();
         PageInfo pageInfo = new PageInfo(diaryDtoList);
         return pageInfo.getList();
@@ -39,8 +40,27 @@ public class DiaryServiceImpl implements DiaryService {
     @Override
     public List<Diary> pageDiary() {
         PageHelper.startPage(1,10);
-        List<Diary> diaryList = diaryMapper.selectAll();
+        Example example = new Example(Diary.class);
+        example.setOrderByClause("createTime desc");
+        List<Diary> diaryList = diaryMapper.selectByExample(example);
         PageInfo pageInfo = new PageInfo(diaryList);
         return pageInfo.getList();
+    }
+
+    @Override
+    public Diary selectByPrimaryKey(Integer id) {
+        Diary diary = diaryMapper.selectByPrimaryKey(id);
+        return diary;
+    }
+
+    @Override
+    public void updateByPrimaryKey(Diary diary) {
+        diaryMapper.updateByPrimaryKeySelective(diary);
+
+    }
+
+    @Override
+    public void deleteByPrimaryKey(Integer id) {
+        diaryMapper.deleteByPrimaryKey(id);
     }
 }

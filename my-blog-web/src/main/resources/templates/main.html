@@ -24,7 +24,7 @@
         <ul class="nav-top-ul">
             <a href="/index" class="nav-top-a"><li class="nav-top-li active">首页</li></a>
             <a href="/blog/allblog/1" class="nav-top-a"><li class="nav-top-li ">博客</li></a>
-            <a href="#" class="nav-top-a"><li class="nav-top-li">首页3</li></a>
+            <a href="/diary/allDiary" class="nav-top-a"><li class="nav-top-li">随笔</li></a>
             <a href="#" class="nav-top-a"><li class="nav-top-li">首页4</li></a>
             <a href="#" class="nav-top-a"><li class="nav-top-li">首页5</li></a>
 
@@ -63,11 +63,7 @@
             <div class="latest-blog-top-left">
                 <div class="latest-blog-top-left-title"><i class="fa fa-book">&nbsp;置顶博客</i></div>
             </div>
-            <a href="/blog/allblog/1">
-            <div class="latest-blog-top-right">
-              <i class="fa fa-chevron-right" aria-hidden="true"></i>
-            </div>
-            </a>
+
         </div>
 
         <div class="latest-blog-body" th:each="list:${topPreviewList}">
@@ -170,8 +166,8 @@
         </div>
         <div class="row diary-row">
             <div class="diary col-md-5" th:each="diaryDto:${diaryDtoList}">
-                <div class="diary-content">
-                    [[${diaryDto.content}]]
+                <div class="diary-content" th:utext="${diaryDto.content}">
+
                 </div>
                 <div class = "diary-bottom">
                     <div class="diary-date">[[${diaryDto.createTime}]]</div>
@@ -193,7 +189,7 @@
     </ul>
 </section>
 <!--页脚部分-->
-<footer class="footer" style="background-image: url('/images/footer.png'); background-size: 80%;">
+<footer class="footer" style="background-image: url('/images/footer.png'); background-size: 80%;margin-top: 50px">
     <div class="text1">Copyright &copy;2019 BraisedPanda</div>
     <div class="text2">Design By BraisedPanda and reference to innei.ren</div>
 </footer>

@@ -20,5 +20,19 @@ public class FontUtils {
         changeStr=changeStr.replace(">","]");
         return changeStr;
     }
+
+    public static String HTMLChange(String source){
+        String changeStr="";
+        changeStr=source.replace("&","&amp;");
+        changeStr=changeStr.replace(" ","&nbsp;");
+        changeStr=changeStr.replace("<p","<p ");
+        changeStr=changeStr.replace("\r\n","<br>");
+        changeStr=changeStr.replace("<font","<font ");
+        changeStr=changeStr.replace(">",">");
+        changeStr=changeStr.replace("</font>","</font>");
+        changeStr=changeStr.replace("<a","<a ");
+        changeStr=changeStr.replace("</a>","</a>");
+        return changeStr;
+    }
 }
 

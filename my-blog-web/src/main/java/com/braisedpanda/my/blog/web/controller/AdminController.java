@@ -2,14 +2,24 @@ package com.braisedpanda.my.blog.web.controller;
 
 import com.braisedpanda.my.blog.commons.model.ResponseStatus;
 import com.braisedpanda.my.blog.commons.model.po.BlogPreview;
+import com.braisedpanda.my.blog.commons.model.po.Diary;
 import com.braisedpanda.my.blog.commons.model.po.Editor;
+import com.braisedpanda.my.blog.commons.model.po.User;
 import com.braisedpanda.my.blog.commons.utils.DateUtils;
 import com.braisedpanda.my.blog.web.service.BlogPreviewService;
+import com.braisedpanda.my.blog.web.service.DiaryService;
 import com.braisedpanda.my.blog.web.service.EditService;
+import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @program: my-blog
@@ -24,7 +34,8 @@ public class AdminController {
     private EditService editService;
     @Autowired
     private BlogPreviewService blogpreviewService;
-
+    @Autowired
+    private DiaryService diaryService;
     @ApiOperation("插入markdown")
     @PostMapping("/blog/insert")
     public ResponseStatus insertEditor(Editor editor, BlogPreview blogPreview){
@@ -83,6 +94,62 @@ public class AdminController {
         editService.deleteById(id);
         blogpreviewService.deleteById(blogId);
         return  ResponseStatus.success("插入markdown成功");
+    }
+
+
+    @PostMapping("/diary/insert")
+    @ApiOperation("创建随笔")
+    public ModelAndView inertDiary(Diary diary, HttpSession session){
+        ModelAndView modelAndView = new ModelAndView();
+        String createTime = DateUtils.currentStandardDate2();
+        diary.setCreateTime(createTime);
+        User user = (User)session.getAttribute("user");
+        if(user != null){
+            String  username = user.getUsername();
+        }
+        String username = "测试";
+        diary.setUsername(username);
+        diaryService.insert(diary);
+        ResponseStatus.success("创建随笔成功");
+        modelAndView.addObject("message","创建成功");
+        modelAndView.setViewName("message");
+        return modelAndView;
+    }
+
+    @GetMapping("/diary/edit/{id}")
+    @ApiOperation("编辑随笔(回显)")
+    public ModelAndView toEditDiary(@PathVariable("id") Integer id){
+        ModelAndView modelAndView = new ModelAndView();
+        Diary diary = diaryService.selectByPrimaryKey(id);
+        modelAndView.addObject("diary",diary);
+        modelAndView.setViewName("diary/edit");
+        return modelAndView;
+    }
+
+    @PostMapping("/diary/update")
+    @ApiOperation("更新随笔")
+    public ModelAndView updateDiary(Diary diary){
+        ModelAndView modelAndView = new ModelAndView();
+        Integer id = diary.getId();
+        diaryService.updateByPrimaryKey(diary);
+        List<Diary> diaryList = new ArrayList<>();
+        diaryList.add(diary);
+        modelAndView.addObject("diaryList",diaryList);
+        modelAndView.addObject("id",id);
+        modelAndView.setViewName("diary/detail");
+        return modelAndView;
+    }
+
+    @GetMapping("/diary/newDiary")
+    @ApiOperation("跳转到创建随笔")
+    public ModelAndView toInsert(){
+        return new ModelAndView("diary/insert");
+    }
+
+    @DeleteMapping("/diary/delete/{id}")
+    @ApiOperation("删除随笔")
+    public void deleteDiary(@PathVariable("id") Integer id){
+        diaryService.deleteByPrimaryKey(id);
     }
 
 

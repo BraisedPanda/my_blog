@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>全部博客</title>
@@ -15,7 +15,7 @@
 
 </head>
 
-<body style="background-image: url('/images/background.png')">
+<body style="background-image: url('/images/background.png')" >
 
 <!--上方导航条-->
 <nav class="navbar navbar-default navbar-fixed-top nav-top ">
@@ -31,14 +31,58 @@
 
     </div>
 </nav>
+<!------是否确认删除模态框-------->
+<div class="modal fade" tabindex="-1" role="dialog" id="deleteBlogModel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">提示</h4>
+            </div>
+            <div class="modal-body">
+                <p>确定是要删除这篇博客吗？</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">手滑了...</button>
+                <button type="button" class="btn btn-danger" onclick="deleteDiary()">确认删除</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
+<!------删除成功提示-------->
+<div class="modal fade" tabindex="-1" role="dialog" id="deleteSuccessModel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">提示</h4>
+            </div>
+            <div class="modal-body">
+                <p>删除成功</p>
+            </div>
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-success" onclick="confirmDelete()">确定</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!------模态框结束-------->
+<input type="hidden" id="delid" th:value="${id}">
+<!-------右上角博客编辑模块------->
+<section class="edit-nav" shiro:hasRole="admin">
+    <ul class="edit-nav-ul" style="margin-right: 30px">
+        <a href="/admin/diary/newDiary"><li class="edit-nav-li"><i class="fa fa-plus fa-lg" aria-hidden="true"></i></li></a>
+        <a th:href="@{/admin/diary/edit/{id}(id = ${id})}"><li class="edit-nav-li" ><i class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i></li></a>
+        <a data-toggle="modal" data-target="#deleteBlogModel"><li class="edit-nav-li"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i></li></a>
+    </ul>
+</section>
 <!--全部博客-->
-<section class="all-diary">
+<section class="all-diary" id="all-diary" >
     <div class="all-diary-body" th:each="diary:${diaryList}">
         <div class="all-diary-top">
 
             <div class="all-diary-decoration"></div>
-            <a th:href="@{/diary/view/{id}(id=${diary.id})}" class="all-diary-a" style="text-decoration: none;color: black">
+            <a href="javascript:void(0);" class="all-diary-a" style="text-decoration: none;color: black">
             <div class="all-diary-time" >[[${diary.createTime}]]</div>
             <div class="all-diary-title">[[${diary.title}]]</div>
             </a>
@@ -82,6 +126,33 @@
 <script type="text/javascript" charset="utf-8"  src="/js/Live2D/L2Dwidget.min.js"></script>
 <script>
     $(function () {
+        /**获取屏幕宽度**/
+        var height = $(window).height();
+
+        $("#all-diary").css("height",height-230);
+
+        deleteDiary = function () {
+            var id = $("#delid").val();
+           console.log(id);
+            $.ajax({
+                type: 'delete',
+                url: '/admin/diary/delete/'+id ,
+
+                success:function () {
+                    $('#deleteBlogModel').modal('hide');
+                    $('#deleteSuccessModel').modal('show');
+                },
+                error:function () {
+                    $('#deleteBlogModel').modal('hide');
+                    alert("删除失败");
+                }
+            });
+        }
+        confirmDelete = function () {
+            $('#deleteSuccessModel').modal('hide');
+            window.location.href = "/index";
+        }
+
 
         /**加载看板娘**/
         L2Dwidget.init({ "model": { jsonPath:
@@ -95,6 +166,7 @@
 
             sensitivity: 20
         });
+
 
 
     });

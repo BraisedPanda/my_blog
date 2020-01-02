@@ -12,4 +12,10 @@ public interface DiaryService {
     List<DiaryDto> pageDiaryDto();
 
     List<Diary> pageDiary();
+
+    Diary selectByPrimaryKey(Integer id);
+
+    void updateByPrimaryKey(Diary diary);
+
+    void deleteByPrimaryKey(Integer id);
 }

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>写随笔</title>
+    <title>编辑随笔</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -24,21 +24,21 @@
                 <img src="/images/img-01.png" alt="IMG">
             </div>
 
-            <form class="contact100-form validate-form" method="post" action="/admin/diary/insert" >
+            <form class="contact100-form validate-form" method="post" action="/admin/diary/update" >
                 <span class="contact100-form-title">
 						<div style="font-family: 幼圆;color:rgb(132, 106, 221);text-align: center;font-size:35px ">随笔</div>
 					</span>
 
-
+                <input type="hidden" name="id" th:value="${diary.id}">
                 <div class="wrap-input100 validate-input" data-validate = "填写你的标题吧~" >
-                    <input class="input100"  placeholder="标题" id="title" name="title"></input>
+                    <input class="input100"  placeholder="标题" id="title" name="title" th:value="${diary.title}"></input>
                     <span class="focus-input100"></span>
                     <span class="symbol-input100">
 							<i class="fa fa-paper-plane-o" aria-hidden="true" style="color: rgb(132, 106, 221)"></i>
 						</span>
                 </div>
                 <div class="wrap-input100 validate-input" data-validate = "想写些什么呢...">
-                    <textarea class="input100" type="text" name="content"  placeholder="想写些什么呢..." style="height: 230px" id="content"></textarea>
+                    <textarea class="input100" type="text" name="content"  placeholder="想写些什么呢..." style="height: 230px" id="content" th:text="${diary.content}"></textarea>
                     <span class="focus-input100"></span>
                     <span class="symbol-input100">
 
@@ -46,14 +46,14 @@
                 </div>
 
                 <div class="wrap-input100 validate-input" data-validate = "今天天气如何" style="width: 50%;float: left">
-                    <input class="input100" name="weather" type="text"  placeholder="天气" id="weather"></input>
+                    <input class="input100" name="weather" type="text"  placeholder="天气" id="weather" th:value="${diary.weather}"></input>
                     <span class="focus-input100"></span>
                     <span class="symbol-input100">
 							<i class="fa fa-moon-o" aria-hidden="true" style="color: rgb(132, 106, 221)"></i>
 						</span>
                 </div>
                 <div class="wrap-input100 validate-input" data-validate = "此刻的心情..." style="width: 50%;float: left">
-                    <input class="input100" name="mood" type="text"  placeholder="心情" id="mood"></input>
+                    <input class="input100" name="mood" type="text"  placeholder="心情" id="mood" th:value="${diary.mood}"></input>
                     <span class="focus-input100"></span>
                     <span class="symbol-input100">
 							<i class="fa fa-heart" aria-hidden="true" style="color: rgb(132, 106, 221)"></i>

@@ -1,5 +1,6 @@
 body{
     background-image: url('/images/background.png');
+    height: auto;
 }
 /**********个人信息展示************/
 .person-info{
@@ -199,10 +200,11 @@ body{
 
 /***随笔模块开始***/
 .all-diary{
+
     margin-top: 30px;
     width: 95%;
     float: left;
-    height: auto;
+    height: 700px;
     position: relative;
 
 }
@@ -244,10 +246,9 @@ body{
     float: left;
     background: rgb(255, 153, 135);
     position: relative;
-
     margin-top:15px;
     margin-left: 20px;
-    height:115px;
+    height:130px;
     color:white;
     border-radius: 15px;
 
@@ -255,15 +256,16 @@ body{
 .diary-content{
     margin-top:15px;
     text-align: left;
-    height:60px;
+    height: auto;
 
 }
 .diary-bottom{
     width: 400px;
     float: left;
-
+    margin-top: 6px;
 }
 .diary-date{
+
     float: left;
 }
 .readmore{
@@ -292,4 +294,8 @@ body{
     width: 500px;
     height:300px;
     border-radius: 15px;
+}
+.footer{
+    float: left;
+    position: relative;
 }
