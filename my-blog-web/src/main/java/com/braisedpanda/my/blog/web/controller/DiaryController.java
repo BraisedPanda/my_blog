@@ -48,6 +48,7 @@ public class DiaryController {
         }
         modelAndView.addObject("diaryList",diaryList);
         modelAndView.setViewName("diary/all-diary");
+
         return modelAndView;
     }
 

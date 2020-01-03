@@ -17,5 +17,8 @@ public class Test {
         System.out.println(result);
     }
 
+    public void testLambda(){
+
+    }
 
 }

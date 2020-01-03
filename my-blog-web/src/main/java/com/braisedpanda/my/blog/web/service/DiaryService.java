@@ -18,4 +18,6 @@ public interface DiaryService {
     void updateByPrimaryKey(Diary diary);
 
     void deleteByPrimaryKey(Integer id);
+
+    List<Diary> selectDirayWeb();
 }

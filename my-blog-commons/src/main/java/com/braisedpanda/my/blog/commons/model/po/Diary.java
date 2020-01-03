@@ -33,4 +33,6 @@ public class Diary implements Serializable{
     private String mood;
     @Column(name = "title")
     private String title;
+    @Column(name = "category")
+    private Integer category;
 }

@@ -63,4 +63,14 @@ public class DiaryServiceImpl implements DiaryService {
     public void deleteByPrimaryKey(Integer id) {
         diaryMapper.deleteByPrimaryKey(id);
     }
+
+    @Override
+    public List<Diary> selectDirayWeb() {
+        Example example = new Example(Diary.class);
+        Example.Criteria criteria = example.createCriteria();
+        criteria.andEqualTo("category","1");
+        example.setOrderByClause("createTime desc");
+        List<Diary> diaryList = diaryMapper.selectByExample(example);
+        return diaryList;
+    }
 }

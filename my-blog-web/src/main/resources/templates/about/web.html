@@ -6,10 +6,11 @@
     <link rel="icon" th:href="@{/images/favicon.ico}" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
     <link rel="stylesheet" href="/css/bootstrap.css">
-    <link rel="stylesheet" href="/css/alldiary.css">
+
     <link rel="stylesheet" href="/css/font-awesome.css">
     <link rel="stylesheet" type="text/css" href="/css/nav.css">
     <link rel="stylesheet" type="text/css" href="/css/scrollbar.css">
+    <link rel="stylesheet" href="/css/aboutWeb.css">
 
 
 
@@ -23,9 +24,9 @@
         <ul class="nav-top-ul">
             <a href="/index" class="nav-top-a"><li class="nav-top-li ">首页</li></a>
             <a href="/blog/allblog/1" class="nav-top-a"><li class="nav-top-li ">博客</li></a>
-            <a href="/diary/allDiary" class="nav-top-a"><li class="nav-top-li active">随笔</li></a>
+            <a href="/diary/allDiary" class="nav-top-a"><li class="nav-top-li ">随笔</li></a>
             <a href="#" class="nav-top-a"><li class="nav-top-li">首页4</li></a>
-            <a href="/about/web" class="nav-top-a"><li class="nav-top-li">关于本站</li></a>
+            <a href="#" class="nav-top-a"><li class="nav-top-li active">关于本站</li></a>
 
         </ul>
 
@@ -33,28 +34,29 @@
 </nav>
 
 <!--全部博客-->
-<section class="all-diary">
-    <div class="all-diary-body" th:each="diary:${diaryList}">
-        <div class="all-diary-top">
 
-            <div class="all-diary-decoration"></div>
-            <a th:href="@{/diary/view/{id}(id=${diary.id})}" class="all-diary-a" style="text-decoration: none;color: black">
-            <div class="all-diary-time" >[[${diary.createTime}]]</div>
-            <div class="all-diary-title">[[${diary.title}]]</div>
-            </a>
-        </div>
-        <div class="all-diary-content" th:utext="${diary.content}">
+    <div class="container" >
+        <div class="row">
+            <div class="col-md-12">
+                <div class="main-timeline" >
+                    <div class="timeline" th:each="diaryList:${diaryList}">
+                        <div class="timeline-content">
+                        <span class="date">
+                            <a class="date-a" th:href="@{/diary/view/{id}(id=${diaryList.id})}" style="text-decoration: none">
+                            <span class="day">[[${diaryList.month}]]</span>
+                            <span class="month">[[${diaryList.day}]]</span>
+                            <span class="year">[[${diaryList.year}]]</span>
+                            </a>
+                        </span>
+                            <h2 class="title" th:text="${diaryList.title}">Web Design</h2>
+                            <p class="description" th:utext="${diaryList.content}">......</p>
+                        </div>
+                    </div>
 
+                </div>
+            </div>
         </div>
-        <div class="all-diary-bottom">
-            <ul class ="all-diary-ul">
-                <li class=" all-diary-li-f"><i class="fa fa-user " aria-hidden="true">&nbsp;&nbsp;[[${diary.username}]]</i></li>
-                <li class="all-diary-li "><i class="fa fa-moon-o " aria-hidden="true">&nbsp;&nbsp;[[${diary.weather}]]</i></li>
-                <li class="all-diary-li "><i class="fa fa-heart " aria-hidden="true">&nbsp;&nbsp;[[${diary.mood}]]</i></li>
-            </ul>
-        </div>
-    </div>
-</section>
+
 
 <!--右下角固定导航栏-->
 <section class="fix-nav" style="margin-right: 40px">
@@ -65,7 +67,7 @@
     </ul>
 </section>
 <!--页脚部分-->
-<footer class="footer" style="background-image: url('/images/footer.png'); background-size: 80%;">
+<footer class="footer" style="background-image: url('/images/footer.png'); background-size: 80%;width: 1500px;margin-left: -200px">
     <div class="text1">Copyright &copy;2019 BraisedPanda</div>
     <div class="text2">Design By BraisedPanda and reference to innei.ren</div>
 </footer>
