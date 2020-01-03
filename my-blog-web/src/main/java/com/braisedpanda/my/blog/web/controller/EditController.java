@@ -1,6 +1,7 @@
 package com.braisedpanda.my.blog.web.controller;
 
 import com.braisedpanda.my.blog.commons.model.ResponseStatus;
+import com.braisedpanda.my.blog.commons.model.dto.PageInfo;
 import com.braisedpanda.my.blog.commons.model.po.BlogPreview;
 import com.braisedpanda.my.blog.commons.model.po.Editor;
 import com.braisedpanda.my.blog.commons.utils.DateUtils;
@@ -53,10 +54,21 @@ public class EditController {
     @GetMapping("/allblog/{page}")
     public ModelAndView allBlog(@PathVariable(value = "page") int page) {
         ModelAndView modelAndView = new ModelAndView();
-
         List<BlogPreview> topBlogPreview = blogpreviewService.getAllBlogPreview(page);
+        int totalCount = blogpreviewService.selectAll().size();
+        PageInfo pageInfo = new PageInfo();
+        pageInfo.setPage(page);
+        pageInfo.setTotalCount(totalCount);
+        int pageSize = 6;
+        int pageTotal = 0;
+        if(totalCount % pageSize ==0){
+            pageTotal = totalCount / pageSize;
+        }else{
+            pageTotal = totalCount / pageSize +1;
+        }
+        pageInfo.setPageTotal(pageTotal);
         modelAndView.addObject("topPreviewList",topBlogPreview);
-
+        modelAndView.addObject("pageInfo",pageInfo);
         modelAndView.setViewName("blog/all-blog");
         return modelAndView;
     }

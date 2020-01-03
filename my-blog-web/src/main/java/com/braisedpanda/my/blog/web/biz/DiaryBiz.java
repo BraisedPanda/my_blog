@@ -1,6 +1,6 @@
 package com.braisedpanda.my.blog.web.biz;
 
-import com.braisedpanda.my.blog.commons.model.po.DiaryDto;
+import com.braisedpanda.my.blog.commons.model.dto.DiaryDto;
 import com.braisedpanda.my.blog.commons.utils.FontUtils;
 import com.braisedpanda.my.blog.web.service.DiaryService;
 import org.springframework.beans.factory.annotation.Autowired;

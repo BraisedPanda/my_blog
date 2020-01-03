@@ -24,7 +24,7 @@
         <ul class="nav-top-ul">
             <a href="/index" class="nav-top-a"><li class="nav-top-li active">首页</li></a>
             <a href="/blog/allblog/1" class="nav-top-a"><li class="nav-top-li ">博客</li></a>
-            <a href="/diary/allDiary" class="nav-top-a"><li class="nav-top-li">随笔</li></a>
+            <a href="/diary/allDiary/1" class="nav-top-a"><li class="nav-top-li">随笔</li></a>
             <a href="#" class="nav-top-a"><li class="nav-top-li">首页4</li></a>
             <a href="/about/web" class="nav-top-a"><li class="nav-top-li">关于本站</li></a>
 
@@ -81,7 +81,7 @@
             <div class="latest-blog-body-right">
                 <a th:href="@{/blog/view/{id}(id=${list.id})}">
                     <div class="latest-blog-body-title">
-                        [[${list.title}]]
+                        <font style="color: #c21f30;">[置顶]</font>[[${list.title}]]
                     </div>
                 </a>
                 <a th:href="@{/blog/view/{id}(id=${list.id})}">
@@ -158,7 +158,7 @@
             <div class="all-diary-top-left">
                 <div class="all-diary-top-left-title"><i class="fa fa-pencil">&nbsp;随笔</i></div>
             </div>
-            <a href="/diary/allDiary">
+            <a href="/diary/allDiary/1">
                 <div class="all-diary-top-right">
                     <i class="fa fa-chevron-right" aria-hidden="true"></i>
                 </div>

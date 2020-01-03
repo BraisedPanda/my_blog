@@ -2,14 +2,16 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>全部博客</title>
+    <title>查看所有随笔</title>
     <link rel="icon" th:href="@{/images/favicon.ico}" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
     <link rel="stylesheet" href="/css/bootstrap.css">
     <link rel="stylesheet" href="/css/alldiary.css">
     <link rel="stylesheet" href="/css/font-awesome.css">
+    <link rel="stylesheet" href="/css/paging.css">
     <link rel="stylesheet" type="text/css" href="/css/nav.css">
     <link rel="stylesheet" type="text/css" href="/css/scrollbar.css">
+
 
 
 
@@ -23,7 +25,7 @@
         <ul class="nav-top-ul">
             <a href="/index" class="nav-top-a"><li class="nav-top-li ">首页</li></a>
             <a href="/blog/allblog/1" class="nav-top-a"><li class="nav-top-li ">博客</li></a>
-            <a href="/diary/allDiary" class="nav-top-a"><li class="nav-top-li active">随笔</li></a>
+            <a href="/diary/allDiary/1" class="nav-top-a"><li class="nav-top-li active">随笔</li></a>
             <a href="#" class="nav-top-a"><li class="nav-top-li">首页4</li></a>
             <a href="/about/web" class="nav-top-a"><li class="nav-top-li">关于本站</li></a>
 
@@ -64,19 +66,22 @@
         <a href="/index"><li class="fix-nav-li"><i class="fa fa-home fa-lg" aria-hidden="true"></i></li></a>
     </ul>
 </section>
+<!--分页插件-->
+<div class="box" id="box"></div>
 <!--页脚部分-->
 <footer class="footer" style="background-image: url('/images/footer.png'); background-size: 80%;">
     <div class="text1">Copyright &copy;2019 BraisedPanda</div>
     <div class="text2">Design By BraisedPanda and reference to innei.ren</div>
 </footer>
 
-
+<input type="hidden" id="pageNo" th:value="${pageInfo.page}">
+<input type="hidden" id="pageTotal" th:value="${pageInfo.pageTotal}">
+<input type="hidden" id="totalCount" th:value="${pageInfo.totalCount}">
 
 <script src="/js/jquery-3.4.1.js"></script>
 <script src="/js/bootstrap.js"></script>
-
-
-<script src="/js/loading.js"></script>
+<script src="/js/paging.js"></script>
+<!--<script src="/js/loading.js"></script>-->
 
 
 <script type="text/javascript" charset="utf-8"  src="/js/Live2D/L2Dwidget.min.js"></script>
@@ -98,6 +103,22 @@
 
 
     });
+    /**分页插件**/
+    var totalCount = $("#totalCount").val();
+    var pageNo = $("#pageNo").val();
+    var pageTotal = $("#pageTotal").val();
+    $('#box').paging({
+        initPageNo: pageNo, // 初始页码
+        totalPages: pageTotal, //总页数
+        totalCount: '合计' + totalCount + '条数据', // 条目总数
+        slideSpeed: 600, // 缓动速度。单位毫秒
+        jump: true, //是否支持跳转
+        callback: function(page) { // 回调函数
+            if(page != pageNo){
+                window.location.href = "/diary/allDiary/"+page;
+            }
+        }
+    })
 </script>
 
 </body>

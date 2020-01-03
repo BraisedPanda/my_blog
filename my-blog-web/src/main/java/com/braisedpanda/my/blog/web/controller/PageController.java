@@ -2,19 +2,17 @@ package com.braisedpanda.my.blog.web.controller;
 
 import com.braisedpanda.my.blog.commons.model.po.BlogPreview;
 import com.braisedpanda.my.blog.commons.model.po.Diary;
-import com.braisedpanda.my.blog.commons.model.po.DiaryDto;
-import com.braisedpanda.my.blog.commons.model.po.DiaryWebDto;
+import com.braisedpanda.my.blog.commons.model.dto.DiaryDto;
+import com.braisedpanda.my.blog.commons.model.dto.DiaryWebDto;
 import com.braisedpanda.my.blog.commons.utils.FontUtils;
 import com.braisedpanda.my.blog.web.biz.DiaryBiz;
 import com.braisedpanda.my.blog.web.service.BlogPreviewService;
 import com.braisedpanda.my.blog.web.service.DiaryService;
-import com.braisedpanda.my.blog.web.service.EditService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 

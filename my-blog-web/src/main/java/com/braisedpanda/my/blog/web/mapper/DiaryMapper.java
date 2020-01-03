@@ -1,7 +1,7 @@
 package com.braisedpanda.my.blog.web.mapper;
 
 import com.braisedpanda.my.blog.commons.model.po.Diary;
-import com.braisedpanda.my.blog.commons.model.po.DiaryDto;
+import com.braisedpanda.my.blog.commons.model.dto.DiaryDto;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Component;
 

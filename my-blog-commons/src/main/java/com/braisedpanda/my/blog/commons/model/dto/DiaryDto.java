@@ -1,4 +1,4 @@
-package com.braisedpanda.my.blog.commons.model.po;
+package com.braisedpanda.my.blog.commons.model.dto;
 
 import lombok.Data;
 
@@ -15,14 +15,14 @@ import java.io.Serializable;
  **/
 @Data
 @Table(name = "diary_preview")
-public class DiaryWebDto implements Serializable{
-
-    private static final long serialVersionUID = -5459823084061855369L;
+public class DiaryDto implements Serializable{
+    private static final long serialVersionUID = -5914371001146806544L;
+    @Id
+    @Column(name = "id")
     private Integer id;
+    @Column(name = "createTime")
+    private String createTime;
+    @Column(name = "content")
     private String content;
-    private String day;
-    private String month;
-    private String year;
-    private String title;
 
 }

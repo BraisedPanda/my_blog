@@ -18,4 +18,6 @@ public interface BlogPreviewService {
     void deleteById(Integer blogId);
 
     List<BlogPreview> getAllBlogPreview(int page);
+
+    List<BlogPreview> selectAll();
 }

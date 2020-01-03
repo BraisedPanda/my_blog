@@ -2,7 +2,7 @@ package com.braisedpanda.my.blog.web.service.impl;
 
 
 import com.braisedpanda.my.blog.commons.model.po.Diary;
-import com.braisedpanda.my.blog.commons.model.po.DiaryDto;
+import com.braisedpanda.my.blog.commons.model.dto.DiaryDto;
 import com.braisedpanda.my.blog.web.mapper.DiaryMapper;
 import com.braisedpanda.my.blog.web.service.DiaryService;
 import com.github.pagehelper.PageHelper;
@@ -72,5 +72,11 @@ public class DiaryServiceImpl implements DiaryService {
         example.setOrderByClause("createTime desc");
         List<Diary> diaryList = diaryMapper.selectByExample(example);
         return diaryList;
+    }
+
+    @Override
+    public List<Diary> selectAll() {
+        List<Diary> list = diaryMapper.selectAll();
+        return list;
     }
 }

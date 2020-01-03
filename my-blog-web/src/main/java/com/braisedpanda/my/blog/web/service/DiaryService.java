@@ -1,7 +1,7 @@
 package com.braisedpanda.my.blog.web.service;
 
 import com.braisedpanda.my.blog.commons.model.po.Diary;
-import com.braisedpanda.my.blog.commons.model.po.DiaryDto;
+import com.braisedpanda.my.blog.commons.model.dto.DiaryDto;
 
 import java.util.List;
 
@@ -20,4 +20,6 @@ public interface DiaryService {
     void deleteByPrimaryKey(Integer id);
 
     List<Diary> selectDirayWeb();
+
+    List<Diary> selectAll();
 }
