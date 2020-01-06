@@ -79,4 +79,12 @@ public class PageController {
         modelAndView.setViewName("about/web");
         return modelAndView;
     }
+
+
+    @ApiOperation("新建页面")
+    @GetMapping("/toEditPage")
+    public ModelAndView toNewPage(){
+        return new ModelAndView("editPage");
+    }
+
 }

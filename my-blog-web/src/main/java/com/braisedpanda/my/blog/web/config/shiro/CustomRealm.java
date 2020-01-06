@@ -27,6 +27,7 @@ public class CustomRealm extends AuthorizingRealm {
         //查询登录用户所拥有的角色，并添加角色
         int id = user.getId();
         JSONObject jsonObject = (JSONObject) redisTemplate.opsForValue().get("AuthorizationInfo"+id);
+
         Role role = JSONObject.toJavaObject(jsonObject,Role.class);
         if(role == null){
             role = userService.getRole(id);
