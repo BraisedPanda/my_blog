@@ -4,4 +4,15 @@
     <select id="selectAllDiaryDto" resultType="com.braisedpanda.my.blog.commons.model.dto.DiaryDto">
         select id,createTime,content from diary order by createTime desc
     </select>
+
+    <select id="testSql1" resultType="com.braisedpanda.my.blog.commons.model.po.Diary">
+--          select * from diary where id &lt; 45
+            select * from diary where id  45
+    </select>
+
+    <select id="testSql2" resultType="com.braisedpanda.my.blog.commons.model.po.Diary">
+        select * from diary where id <![CDATA[<]]> 45
+    </select>
+
+
 </mapper>

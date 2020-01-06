@@ -14,7 +14,6 @@ spring:
       enabled: true
       charset: UTF-8
 
-
   messages:
     encoding: UTF-8
   datasource:
@@ -38,6 +37,13 @@ spring:
         test-while-idle: true
         test-on-borrow: false
         test-on-return: false
+##redis配置
+  redis:
+    host: 47.98.135.254
+    port: 6379
+    password:
+
+
 
 ##pagehelper配置
 pagehelper:

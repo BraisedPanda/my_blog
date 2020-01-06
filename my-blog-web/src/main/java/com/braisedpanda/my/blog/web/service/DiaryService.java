@@ -22,4 +22,8 @@ public interface DiaryService {
     List<Diary> selectDirayWeb();
 
     List<Diary> selectAll();
+
+    List<Diary> testSql1();
+
+    List<Diary> testSql2();
 }

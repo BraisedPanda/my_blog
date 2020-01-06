@@ -11,4 +11,8 @@ import java.util.List;
 @Mapper
 public interface DiaryMapper extends tk.mybatis.mapper.common.Mapper<Diary>{
     List<DiaryDto> selectAllDiaryDto();
+
+    List<Diary> testSql1();
+
+    List<Diary> testSql2();
 }

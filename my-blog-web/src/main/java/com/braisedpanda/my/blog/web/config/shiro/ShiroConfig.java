@@ -1,4 +1,4 @@
-package com.braisedpanda.my.blog.web.config;
+package com.braisedpanda.my.blog.web.config.shiro;
 
 
 import at.pollux.thymeleaf.shiro.dialect.ShiroDialect;

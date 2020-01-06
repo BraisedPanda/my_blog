@@ -79,4 +79,17 @@ public class DiaryServiceImpl implements DiaryService {
         List<Diary> list = diaryMapper.selectAll();
         return list;
     }
+
+
+    @Override
+    public List<Diary> testSql1() {
+        List<Diary> list = diaryMapper.testSql1();
+        return list;
+    }
+
+    @Override
+    public List<Diary> testSql2() {
+        List<Diary> list = diaryMapper.testSql2();
+        return list;
+    }
 }
