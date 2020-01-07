@@ -1,14 +1,12 @@
 package com.braisedpanda.my.blog.web.controller;
 
 import com.braisedpanda.my.blog.commons.model.ResponseStatus;
-import com.braisedpanda.my.blog.commons.model.po.BlogPreview;
-import com.braisedpanda.my.blog.commons.model.po.Diary;
-import com.braisedpanda.my.blog.commons.model.po.Editor;
-import com.braisedpanda.my.blog.commons.model.po.User;
+import com.braisedpanda.my.blog.commons.model.po.*;
 import com.braisedpanda.my.blog.commons.utils.DateUtils;
 import com.braisedpanda.my.blog.web.service.BlogPreviewService;
 import com.braisedpanda.my.blog.web.service.DiaryService;
 import com.braisedpanda.my.blog.web.service.EditService;
+import com.braisedpanda.my.blog.web.service.GlobalLogService;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.apache.ibatis.annotations.Param;
@@ -36,6 +34,8 @@ public class AdminController {
     private BlogPreviewService blogpreviewService;
     @Autowired
     private DiaryService diaryService;
+    @Autowired
+    private GlobalLogService logService;
     @ApiOperation("插入markdown")
     @PostMapping("/blog/insert")
     public ResponseStatus insertEditor(Editor editor, BlogPreview blogPreview){
@@ -152,5 +152,18 @@ public class AdminController {
         diaryService.deleteByPrimaryKey(id);
     }
 
+    @PostMapping("/log/allLog")
+    @ApiOperation("查看所有日志")
+    public ResponseStatus allLog(){
+        List<GlobalLog> globalLogList = logService.selectAll();
+        return ResponseStatus.success(globalLogList,"查找所有日志");
+    }
+
+    @GetMapping("/log/toallLog")
+    @ApiOperation("跳转到日志页面")
+    public ModelAndView toLog(){
+
+        return new ModelAndView("log/log");
+    }
 
 }

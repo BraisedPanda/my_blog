@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>查看博客</title>
+    <!--<link rel="icon" href="/img/core-img/favicon.ico">-->
+    <link rel="icon" th:href="@{/images/favicon.ico}" type="image/x-icon">
+    <!--<link rel="stylesheet" th:href="@{/css/index.css}">-->
+    <link rel="stylesheet" th:href="@{/css/font-awesome.css}">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
+    <link th:href="@{/css/bootstrap-table.css}" rel="stylesheet">
+
+
+</head>
+<body style="background: url('/images/background.png')">
+    <h2 style="text-align: center;margin-top: 20px;font-family: 华文隶书">查看日志</h2>
+    <table id="table"
+           data-page-list="[10, 25, 50, 100, ALL]"></table>
+
+    <script src="/js/jquery-3.4.1.js"></script>
+    <script src="/js/loading.js"></script>
+    <script src="/js/bootstrap.js"></script>
+    <script th:src="@{/js/bootstrap-table.js}"></script>
+    <script src="js/modernizr.custom.js"></script>
+    <script>
+        $(function () {
+            $.ajax({
+                method: 'post',
+                url: '/admin/log/allLog',
+                success: function (result) {
+                    $('#table').bootstrapTable({
+                        data: result.data,
+                        pagination: true,
+                        search: true,
+                        showSearchButton: true,
+
+                        columns: [
+                            {
+                                field: 'id',
+                                sortable: true,
+                                title: 'ID'
+
+                            },
+                            {
+                                field: 'username',
+                                sortable: true,
+                                title: '用户'
+
+                            },{
+                                field: 'ip',
+                                sortable: true,
+                                title: 'IP地址'
+                            }, {
+                                field: 'host',
+                                sortable: true,
+                                title: '主机地址'
+                            }, {
+                                field: 'controller',
+                                sortable: true,
+                                title: 'Controller'
+                            }, {
+                                field: 'url',
+                                sortable: true,
+                                title: '请求路径'
+                            }, {
+                                field: 'date',
+                                sortable: true,
+                                title: '时间'
+
+                            }
+                        ]
+                    })
+                }
+            });
+
+        });
+    </script>
+
+
+</body>
+
+</html>
