@@ -14,6 +14,7 @@ public class DateUtils {
     private static final String STANDARD_TIME = "yyyy-MM-dd HH:mm:ss";
     private static final String STANDARD_TIME_DAY = "yyyy-MM-dd";
     private static final String STANDARD_TIME_DAY_HM = "yyyy年MM月dd日 HH:mm";
+    private static final String NUMBER_TIME = "yyyyMMddHHmmss";
     /** 
     * @Description: 获取时间 格式【2019-12-30 10:14:55】
     * @Param: 
@@ -40,6 +41,16 @@ public class DateUtils {
      */
     public static String currentDate_YMDHM(){
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(DateUtils.STANDARD_TIME_DAY_HM);
+        return simpleDateFormat.format(new Date());
+    }
+
+    /**
+     * @Description: 获取时间 格式【201912301200】
+     * @Param:
+     * @Date: 2019/12/16 0016
+     */
+    public static String NUMBER_TIME(){
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(DateUtils.NUMBER_TIME);
         return simpleDateFormat.format(new Date());
     }
 

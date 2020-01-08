@@ -26,17 +26,30 @@ public class CustomRealm extends AuthorizingRealm {
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
         //查询登录用户所拥有的角色，并添加角色
         int id = user.getId();
-        JSONObject jsonObject = (JSONObject) redisTemplate.opsForValue().get("AuthorizationInfo"+id);
-
-        Role role = JSONObject.toJavaObject(jsonObject,Role.class);
-        if(role == null){
-            role = userService.getRole(id);
+        try {
+            JSONObject jsonObject = (JSONObject) redisTemplate.opsForValue().get("AuthorizationInfo"+id);
+            Role role = JSONObject.toJavaObject(jsonObject,Role.class);
+            if(role == null){
+                role = userService.getRole(id);
 //            System.out.println("================开始权限查询================");
-            log.info("================开始权限查询================");
-            redisTemplate.opsForValue().set("AuthorizationInfo"+id,role);
+                log.info("================开始权限查询================");
+                redisTemplate.opsForValue().set("AuthorizationInfo"+id,role);
+                info.addRole(role.getRole());
+                return info;
+            }
+        }catch (Exception e){
+            log.error("================redis链接超时，转到数据库查询================");
+            throw new RuntimeException(e);
+        }finally {
+            Role role = userService.getRole(id);
+            info.addRole(role.getRole());
+            return info;
         }
-        info.addRole(role.getRole());
-        return info;
+
+
+
+
+
     }
     //重写验证身份的方法
     @Override

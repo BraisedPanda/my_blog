@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -85,6 +86,13 @@ public class PageController {
     @GetMapping("/toEditPage")
     public ModelAndView toNewPage(){
         return new ModelAndView("editPage");
+    }
+
+    @ApiOperation("跳转到信息提示页面")
+    @RequestMapping("/toError")
+    public ModelAndView toMessage(){
+
+        return new ModelAndView("error/error");
     }
 
 }

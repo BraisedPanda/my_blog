@@ -42,6 +42,7 @@ spring:
     host: 47.98.135.254
     port: 6379
     password:
+    timeout: 2000
 
 
 

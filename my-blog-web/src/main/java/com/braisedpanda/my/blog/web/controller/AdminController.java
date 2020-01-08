@@ -3,18 +3,18 @@ package com.braisedpanda.my.blog.web.controller;
 import com.braisedpanda.my.blog.commons.model.ResponseStatus;
 import com.braisedpanda.my.blog.commons.model.po.*;
 import com.braisedpanda.my.blog.commons.utils.DateUtils;
+import com.braisedpanda.my.blog.web.config.redis.RedisUtils;
 import com.braisedpanda.my.blog.web.service.BlogPreviewService;
 import com.braisedpanda.my.blog.web.service.DiaryService;
 import com.braisedpanda.my.blog.web.service.EditService;
 import com.braisedpanda.my.blog.web.service.GlobalLogService;
-import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +36,9 @@ public class AdminController {
     private DiaryService diaryService;
     @Autowired
     private GlobalLogService logService;
+    @Autowired
+    private RedisUtils redisUtils;
+
     @ApiOperation("插入markdown")
     @PostMapping("/blog/insert")
     public ResponseStatus insertEditor(Editor editor, BlogPreview blogPreview){
@@ -104,10 +107,11 @@ public class AdminController {
         String createTime = DateUtils.currentStandardDate2();
         diary.setCreateTime(createTime);
         User user = (User)session.getAttribute("user");
-        if(user != null){
-            String  username = user.getUsername();
-        }
         String username = "测试";
+        if(user != null){
+            username = user.getUsername();
+        }
+
         diary.setUsername(username);
         diaryService.insert(diary);
         ResponseStatus.success("创建随笔成功");
@@ -138,11 +142,14 @@ public class AdminController {
         modelAndView.addObject("id",id);
         modelAndView.setViewName("diary/detail");
         return modelAndView;
+
     }
 
     @GetMapping("/diary/newDiary")
     @ApiOperation("跳转到创建随笔")
-    public ModelAndView toInsert(){
+    public ModelAndView toInsert(Model model){
+        String newDiaryToken = redisUtils.getToken();
+        model.addAttribute("newDiaryToken",newDiaryToken);
         return new ModelAndView("diary/insert");
     }
 

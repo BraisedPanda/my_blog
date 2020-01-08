@@ -5,6 +5,7 @@ import com.braisedpanda.my.blog.commons.model.dto.PageInfo;
 import com.braisedpanda.my.blog.commons.model.po.BlogPreview;
 import com.braisedpanda.my.blog.commons.model.po.Editor;
 import com.braisedpanda.my.blog.commons.utils.DateUtils;
+import com.braisedpanda.my.blog.web.config.redis.RedisUtils;
 import com.braisedpanda.my.blog.web.service.BlogPreviewService;
 import com.braisedpanda.my.blog.web.service.EditService;
 import io.swagger.annotations.Api;
@@ -13,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 
@@ -30,12 +32,13 @@ public class EditController {
     private EditService editService;
     @Autowired
     private BlogPreviewService blogpreviewService;
-
+    @Autowired
+    private RedisUtils redisUtils;
 
 
     @ApiOperation("查看博客")
     @GetMapping("/view/{id}")
-    public ModelAndView preview(@PathVariable(value = "id") int id) {
+    public ModelAndView preview(@PathVariable(value = "id") int id, HttpServletRequest request) {
         ModelAndView modelAndView = new ModelAndView();
         //view数加1
         BlogPreview blogPreview = blogpreviewService.getBlogPreviewById(id);
@@ -44,6 +47,8 @@ public class EditController {
         blogpreviewService.updateBlogPreview(blogPreview);
         //显示博客内容
         Editor editor = editService.findEditByBlogId(id);
+
+
         modelAndView.addObject("id",id);
         modelAndView.addObject("editor",editor);
         modelAndView.setViewName("blog/preview");
@@ -72,11 +77,5 @@ public class EditController {
         modelAndView.setViewName("blog/all-blog");
         return modelAndView;
     }
-
-
-
-
-
-
 
 }

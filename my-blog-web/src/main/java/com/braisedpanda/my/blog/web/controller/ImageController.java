@@ -31,9 +31,11 @@ public class ImageController {
     public String  upload(@RequestParam(value = "editormd-image-file", required = false) MultipartFile image) throws Exception{
 
         int index = image.getOriginalFilename().indexOf(".");
+        int last = image.getOriginalFilename().lastIndexOf(".");
+        int length = image.getOriginalFilename().length();
         QiNiuYunUploadUtils upload = new QiNiuYunUploadUtils();
         String currentDate = DateUtils.currentStandardDate();
-        String imageName = image.getOriginalFilename().substring(0,index)+"-"+currentDate;
+        String imageName = image.getOriginalFilename().substring(0,index)+"-"+currentDate+image.getOriginalFilename().substring(last,length);
         byte[] bytes = image.getBytes();
         String url = upload.put64image(bytes,imageName);
         ImageInfo imageInfo = new ImageInfo();
