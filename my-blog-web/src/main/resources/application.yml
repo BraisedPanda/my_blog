@@ -43,9 +43,18 @@ spring:
     port: 6379
     password:
     timeout: 2000
-
-
-
+##rabbitmq配置
+  rabbitmq:
+      host: 47.98.135.254
+      username: admin
+      password: 123456
+      virtual-host: my_vhost
+      port: 5672
+      publisher-confirms: true
+      publisher-returns: true
+      listener:
+          simple:
+            acknowledge-mode: manual
 ##pagehelper配置
 pagehelper:
     params: count=countSql

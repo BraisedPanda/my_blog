@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -82,12 +83,9 @@ public class AdminController {
         blogPreview.setId(blogId);
         editor.setBlogId(blogId);
         editor.setId(editorId);
-
         blogpreviewService.updateBlogPreview(blogPreview);
         /*保存markdown*/
-
         editService.updateEditor(editor);
-
         return  ResponseStatus.success("插入markdown成功");
     }
 
@@ -111,7 +109,6 @@ public class AdminController {
         if(user != null){
             username = user.getUsername();
         }
-
         diary.setUsername(username);
         diaryService.insert(diary);
         ResponseStatus.success("创建随笔成功");
@@ -169,7 +166,6 @@ public class AdminController {
     @GetMapping("/log/toallLog")
     @ApiOperation("跳转到日志页面")
     public ModelAndView toLog(){
-
         return new ModelAndView("log/log");
     }
 

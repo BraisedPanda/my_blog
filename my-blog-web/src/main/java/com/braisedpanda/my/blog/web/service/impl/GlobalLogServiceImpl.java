@@ -5,6 +5,7 @@ import com.braisedpanda.my.blog.web.mapper.GlobalLogMapper;
 import com.braisedpanda.my.blog.web.service.GlobalLogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import tk.mybatis.mapper.entity.Example;
 
 import java.util.List;
 
@@ -26,6 +27,8 @@ public class GlobalLogServiceImpl implements GlobalLogService{
 
     @Override
     public List<GlobalLog> selectAll() {
-        return globalLogMapper.selectAll();
+        Example example = new Example(GlobalLog.class);
+        example.setOrderByClause("t_date desc");
+        return globalLogMapper.selectByExample(example);
     }
 }

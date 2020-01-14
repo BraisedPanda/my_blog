@@ -36,7 +36,7 @@ public class PageController {
     @Autowired
     private DiaryService diaryService;
 
-    @ApiOperation("首页渲染，查找3篇置顶的博客，和3篇最新的博客，6篇随笔")
+    @ApiOperation("首页渲染，查找3篇置顶的博客，和5篇最新的博客，6篇随笔")
     @RequestMapping("/index")
     public ModelAndView index(){
         ModelAndView modelAndView = new ModelAndView();

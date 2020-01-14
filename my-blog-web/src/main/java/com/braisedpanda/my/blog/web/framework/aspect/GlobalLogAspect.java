@@ -42,25 +42,28 @@ public class GlobalLogAspect {
         HttpServletRequest request = attributes.getRequest();
         GlobalLog globalLog = new GlobalLog();
         String url = request.getRequestURI(); //获取操作的URL
-        String controllerUrl = joinPoint.getSignature().getDeclaringTypeName();
-        int index = controllerUrl.lastIndexOf(".")+1;
-        controllerUrl = controllerUrl.substring(index); //获取control路径
-        String ip = IPUtils.getIpAddr(request); //获取ip地址
-        String host = IPUtils.getLocalHost();  //获取host
-        HttpSession session = request.getSession();
-        User user = (User)session.getAttribute("user");
-        String username = "普通游客";
-        if(user!=null){
-            username = user.getUsername();
+        if(!url.equals("/index")){
+            String controllerUrl = joinPoint.getSignature().getDeclaringTypeName();
+            int index = controllerUrl.lastIndexOf(".")+1;
+            controllerUrl = controllerUrl.substring(index); //获取control路径
+            String ip = IPUtils.getIpAddr(request); //获取ip地址
+            String host = IPUtils.getLocalHost();  //获取host
+            HttpSession session = request.getSession();
+            User user = (User)session.getAttribute("user");
+            String username = "普通游客";
+            if(user!=null){
+                username = user.getUsername();
+            }
+            String date = DateUtils.currentStandardDate();
+            globalLog.setIp(ip);
+            globalLog.setUsername(username);
+            globalLog.setUrl(url);
+            globalLog.setController(controllerUrl);
+            globalLog.setDate(date);
+            globalLog.setHost(host);
+            globalLogService.insert(globalLog);
+
         }
-        String date = DateUtils.currentStandardDate();
-        globalLog.setIp(ip);
-        globalLog.setUsername(username);
-        globalLog.setUrl(url);
-        globalLog.setController(controllerUrl);
-        globalLog.setDate(date);
-        globalLog.setHost(host);
-        globalLogService.insert(globalLog);
 
     }
 
